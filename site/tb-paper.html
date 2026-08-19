@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как читать научную статью — Английский язык для кораблестроителей</title>
+<meta name="description" content="Устройство научной статьи IMRaD, стратегия трёх проходов, где искать метод, цифру и новизну, чтение формул вслух, подписи к рисункам и таблицам, язык хеджирования и правила ссылок. Разбор открытой статьи по прочности глиссирующего корпуса.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="tech"></script>
+<main class="wrap">
+  <h1>Как читать научную статью<br><span style="font-weight:400;font-size:.62em">reading a research paper: IMRaD, three passes, hedging and citation</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li><b>О чём страница:</b> как устроена статья в техническом журнале,
+      в каком порядке её читать в зависимости от того, что вам нужно, и как
+      разбирать её язык — формулы, подписи к рисункам, ссылки.</li>
+      <li><b>Главное в языке:</b> хеджирование — <i>may suggest, is likely to,
+      appears to</i>; безглагольные подписи к рисункам; два способа сослаться
+      на чужую работу; настоящее время для чужих выводов и прошедшее для
+      чужого опыта.</li>
+      <li><b>Слова:</b> раздел статьи, метод, допущение, проверка, сходимость
+      сетки, погрешность, ограничение, ссылка, лицензия.</li>
+      <li><b>В конце:</b> разбор настоящей открытой статьи по прочности
+      глиссирующего корпуса с точной ссылкой и лицензией, типичные ошибки,
+      словарь темы и четыре задания с автопроверкой.</li>
+    </ul>
+  </div>
+
+  <p class="lead">Научную статью почти никогда не читают подряд от первой
+  страницы до последней. Её читают выборочно и по нескольку раз: сначала
+  быстро, чтобы понять, нужна ли она вообще, потом внимательнее — ради метода
+  или ради одной цифры. Умение так читать экономит больше времени, чем любое
+  расширение словарного запаса, потому что в статье на сорок страниц вам обычно
+  нужны две.</p>
+
+  <h2>1. Устройство статьи: IMRaD</h2>
+
+  <p>Схему называют IMRaD по первым буквам основных разделов:
+  <i class="en nobar">Introduction — Methods — Results and Discussion</i>.
+  Вокруг них наросли ещё несколько обязательных элементов.</p>
+
+  <table class="dt">
+    <thead><tr><th>Раздел</th><th>На какой вопрос отвечает</th><th>Время глагола</th></tr></thead>
+    <tbody>
+      <tr><td>title, authors, affiliation</td><td>кто и о чём</td><td>—</td></tr>
+      <tr><td>abstract</td><td>вся статья в 200 словах</td><td>смешанное</td></tr>
+      <tr><td>keywords</td><td>по каким словам вас найдут</td><td>—</td></tr>
+      <tr><td>introduction</td><td>что известно, чего не хватает, что делаем</td><td>Present, Present Perfect</td></tr>
+      <tr><td>methods</td><td>что именно сделали и как это проверили</td><td>Past, пассив</td></tr>
+      <tr><td>results</td><td>что получилось, с числами и рисунками</td><td>Past; Present у рисунков</td></tr>
+      <tr><td>discussion</td><td>что это значит и чем расходится с другими</td><td>Present + хеджирование</td></tr>
+      <tr><td>conclusions</td><td>три-четыре пронумерованных вывода</td><td>Present, may / can</td></tr>
+      <tr><td>acknowledgements</td><td>кто финансировал</td><td>Past, пассив</td></tr>
+      <tr><td>references</td><td>откуда всё это взято</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <p>В инженерных журналах <i>Discussion</i> часто не выделен в отдельный
+  раздел: его роль играет раздел сравнения с другими методами или с нормами.
+  Это нормально и даже удобно — обсуждение оказывается там, где стоят числа.</p>
+
+  <h2>2. Что где искать</h2>
+
+  <table class="dt">
+    <thead><tr><th>Задача</th><th>Куда смотреть</th><th>Что искать глазами</th></tr></thead>
+    <tbody>
+      <tr><td>нужен метод, чтобы повторить</td><td>Methods, затем таблица исходных данных</td><td class="en nobar">was modelled, mesh, boundary conditions, verified against</td></tr>
+      <tr><td>нужна одна цифра</td><td>Abstract, потом таблицы Results</td><td class="en nobar">the maximum stress was, by … per cent, within</td></tr>
+      <tr><td>нужно понять новизну</td><td>конец Introduction и первый вывод</td><td class="en nobar">however, to the authors' knowledge, in this study, for the first time</td></tr>
+      <tr><td>нужно понять границы</td><td>Discussion и Conclusions</td><td class="en nobar">is limited to, under the conditions considered, further work</td></tr>
+      <tr><td>нужно найти предшественников</td><td>первые абзацы Introduction</td><td class="en nobar">several authors have, previous studies show</td></tr>
+      <tr><td>нужно проверить доверие к статье</td><td>раздел проверки модели</td><td class="en nobar">grid independence, model testing, agreement within</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Стратегия трёх проходов</h2>
+
+  <p>Приём, который применяют почти все опытные читатели: три захода, каждый
+  со своей целью и своим лимитом времени.</p>
+
+  <table class="dt">
+    <thead><tr><th>Проход</th><th>Что читать</th><th>Время</th><th>Что должно быть понятно после</th></tr></thead>
+    <tbody>
+      <tr><td>первый</td><td>заглавие, аннотация, заголовки разделов, подписи к рисункам, выводы</td><td>10 минут</td><td>о чём статья и нужна ли она вам</td></tr>
+      <tr><td>второй</td><td>весь текст без вывода формул, все рисунки и таблицы</td><td>час</td><td>что сделано, какие числа получены, чем это обосновано</td></tr>
+      <tr><td>третий</td><td>вывод формул, допущения, ссылки на источники</td><td>несколько часов</td><td>смогли бы вы это повторить и где слабое место</td></tr>
+    </tbody>
+  </table>
+
+  <p>Третий проход нужен для двух-трёх статей в год — тех, на которых вы
+  строите свою работу. Всё остальное честно останавливается на первом. Главное
+  правило первого прохода: не лезть в словарь. Незнакомое слово в аннотации
+  обычно термин, и он всё равно объяснён во втором разделе.</p>
+
+  <h2>4. Формулы, рисунки и таблицы</h2>
+
+  <p><b>Формулы вслух.</b> На семинаре формулу придётся прочитать голосом, и
+  здесь у английского свои правила: дробь читается через <i>over</i> или
+  <i>divided by</i>, степень — через <i>squared</i> и <i>to the power of</i>,
+  индекс — через <i>sub</i>.</p>
+
+  <table class="gram">
+    <thead><tr><th>Запись</th><th>Как читают</th><th>Перевод</th></tr></thead>
+    <tbody>
+      <tr><td>σ = M / W</td><td class="en nobar">sigma equals M over W</td><td>сигма равно эм на дубль-вэ</td></tr>
+      <tr><td>t²</td><td class="en nobar">t squared</td><td>тэ в квадрате</td></tr>
+      <tr><td>t³</td><td class="en nobar">t cubed</td><td>тэ в кубе</td></tr>
+      <tr><td>10⁻³</td><td class="en nobar">ten to the minus three</td><td>десять в минус третьей</td></tr>
+      <tr><td>√x</td><td class="en nobar">the square root of x</td><td>корень квадратный из икс</td></tr>
+      <tr><td>x₁</td><td class="en nobar">x sub one</td><td>икс первое</td></tr>
+      <tr><td>dσ/dx</td><td class="en nobar">d sigma by d x</td><td>дэ сигма по дэ икс</td></tr>
+      <tr><td>≈</td><td class="en nobar">is approximately equal to</td><td>приблизительно равно</td></tr>
+      <tr><td>≤</td><td class="en nobar">is less than or equal to</td><td>меньше или равно</td></tr>
+      <tr><td>∝</td><td class="en nobar">is proportional to</td><td>пропорционально</td></tr>
+      <tr><td>31.416 MPa</td><td class="en nobar">thirty-one point four one six megapascals</td><td>31,416 мегапаскаля</td></tr>
+      <tr><td>5.82 %</td><td class="en nobar">five point eight two per cent</td><td>5,82 процента</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">Десятичный разделитель в английском тексте — точка, и вслух
+  она читается словом <i>point</i>, а цифры после неё называются по одной:
+  <i>five point eight two</i>, а не <i>five point eighty-two</i>.</p>
+
+  <p><b>Подпись к рисунку и таблице.</b> Подпись — не предложение, а именная
+  группа: в ней нет личной формы глагола и в конце обычно нет точки в
+  перечислениях частей. Подпись к таблице ставят над таблицей, подпись к
+  рисунку — под рисунком. Ключевые слова подписи: <i>versus</i> («в
+  зависимости от»), <i>for</i> («при»), <i>with</i> и <i>without</i>,
+  буквенные части <i>(a)</i>, <i>(b)</i>.</p>
+
+  <table class="gram">
+    <thead><tr><th>Образец подписи</th><th>Что она обещает</th></tr></thead>
+    <tbody>
+      <tr><td class="en nobar">Fig. 5. Pressure distribution on the hull bottom at three speeds.</td><td>одна величина, три режима</td></tr>
+      <tr><td class="en nobar">Fig. 6. Maximum stress versus plate thickness for four sequences.</td><td>график «одно от другого» с четырьмя кривыми</td></tr>
+      <tr><td class="en nobar">Fig. 7. Free surface: (a) hogging, (b) sagging.</td><td>две картинки в одном рисунке</td></tr>
+      <tr><td class="en nobar">Table 3. Principal particulars of the subject ship.</td><td>главные размерения, исходные данные</td></tr>
+      <tr><td class="en nobar">Table 4. Stress results with and without the wave load.</td><td>сравнение двух случаев</td></tr>
+    </tbody>
+  </table>
+
+  <p><b>Как читать подпись.</b> Начинайте с предлога. <i>Versus</i> говорит,
+  что перед вами график и что первое существительное — по вертикальной оси, а
+  второе — по горизонтальной. <i>For</i> называет условие, при котором всё
+  посчитано. <i>At</i> называет режим или точку. Если ни одного такого предлога
+  нет, перед вами картинка-иллюстрация, а не данные.</p>
+
+  <h2>5. Язык осторожности и язык ссылок</h2>
+
+  <p><b>Хеджирование.</b> Автор технической статьи почти никогда не утверждает
+  прямо: он оставляет себе запас на случай, если через год кто-то поставит
+  опыт точнее. Русский читатель часто принимает это за неуверенность, а на
+  самом деле это признак хорошей статьи. Важно уметь расставить формулировки
+  по силе.</p>
+
+  <table class="gram">
+    <thead><tr><th>Сила</th><th>Формула</th><th>Перевод</th></tr></thead>
+    <tbody>
+      <tr><td>очень сильно</td><td class="en nobar">The results prove that …</td><td>результаты доказывают, что…</td></tr>
+      <tr><td>сильно</td><td class="en nobar">The results show that …</td><td>результаты показывают, что…</td></tr>
+      <tr><td>средне</td><td class="en nobar">The results indicate that …</td><td>результаты указывают на то, что…</td></tr>
+      <tr><td>осторожно</td><td class="en nobar">The results suggest that …</td><td>результаты позволяют предположить…</td></tr>
+      <tr><td>очень осторожно</td><td class="en nobar">The results may suggest that …</td><td>результаты, возможно, говорят о том…</td></tr>
+      <tr><td>признак</td><td class="en nobar">The stress appears to be higher at midship.</td><td>напряжение, по-видимому, выше на миделе</td></tr>
+      <tr><td>вероятность</td><td class="en nobar">A crack is likely to start at the corner.</td><td>трещина, скорее всего, пойдёт от угла</td></tr>
+      <tr><td>тенденция</td><td class="en nobar">Thin panels tend to buckle.</td><td>тонкие панели склонны к потере устойчивости</td></tr>
+      <tr><td>граница</td><td class="en nobar">This holds under the conditions considered.</td><td>это верно в рассмотренных условиях</td></tr>
+      <tr><td>степень</td><td class="en nobar">The agreement is reasonably good.</td><td>совпадение достаточно хорошее</td></tr>
+    </tbody>
+  </table>
+
+  <p><b>Ссылки.</b> Есть два способа сослаться на чужую работу, и они говорят
+  разное. В <i>integral citation</i> автор стоит в предложении подлежащим:
+  <i class="en nobar">Tu et al. [7] compared two methods</i> — вы обращаете
+  внимание на людей. В <i>non-integral citation</i> ссылка убрана в скобки:
+  <i class="en nobar">Two methods have been compared [7]</i> — вы обращаете
+  внимание на факт. Обзорная часть введения строится в основном вторым
+  способом, а спор с чужим результатом — первым.</p>
+
+  <table class="gram">
+    <thead><tr><th>Функция</th><th>Формула</th><th>Перевод</th></tr></thead>
+    <tbody>
+      <tr><td>чужой результат</td><td class="en nobar">Tu et al. [7] showed that the method is applicable.</td><td>Ту с соавторами показали, что метод применим</td></tr>
+      <tr><td>общее место</td><td class="en nobar">It has been shown that the load depends on speed [7].</td><td>показано, что нагрузка зависит от скорости</td></tr>
+      <tr><td>несколько работ</td><td class="en nobar">Several authors [3, 7, 11] have used this approach.</td><td>этот подход применяли несколько авторов</td></tr>
+      <tr><td>согласие</td><td class="en nobar">This agrees with the results of Lu and Wang [9].</td><td>это согласуется с результатами Лу и Вана</td></tr>
+      <tr><td>расхождение</td><td class="en nobar">In contrast to [9], we found no such effect.</td><td>в отличие от работы [9], такого эффекта мы не нашли</td></tr>
+      <tr><td>пробел</td><td class="en nobar">To the authors' knowledge, this case has not been studied.</td><td>насколько известно авторам, этот случай не изучался</td></tr>
+      <tr><td>норматив</td><td class="en nobar">The check follows the Rules of the classification society.</td><td>проверка выполнена по правилам классификационного общества</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">Сокращение <i class="en nobar">et al.</i> — от латинского
+  <i>et alii</i>, «и другие»; точка ставится только после <i>al</i>. Глагол при
+  нём в единственном или множественном числе по смыслу группы авторов:
+  <i class="en nobar">Tu et al. show</i>.</p>
+
+  <h2>6. Разбор настоящей статьи</h2>
+
+  <p>Ниже — реальная статья открытого доступа. Мы разбираем только её язык:
+  полный текст здесь не приводится, цитируются отдельные предложения с
+  указанием раздела, из которого они взяты.</p>
+
+  <table class="dt">
+    <tbody>
+      <tr><th>Заглавие</th><td class="en nobar">Structural strength evaluation of a planing hull based on a one-way coupled CFD-FEA</td></tr>
+      <tr><th>Авторы</th><td class="en nobar">Jianjun Tu, Feng Feng, Yang Lu, Shiwei Wang, Qian Cao</td></tr>
+      <tr><th>Организация</th><td class="en nobar">College of Shipbuilding Engineering, Harbin Engineering University</td></tr>
+      <tr><th>Журнал</th><td class="en nobar">Brodogradnja / Shipbuilding</td></tr>
+      <tr><th>Год и номер</th><td>2025, том 76, № 4, статья 76407, с. 1–20</td></tr>
+      <tr><th>DOI</th><td class="en nobar"><a href="https://doi.org/10.21278/brod76407">10.21278/brod76407</a></td></tr>
+      <tr><th>Страница статьи</th><td class="en nobar"><a href="https://brodogradnja.fsb.hr/vol-76-no-4-76407/">brodogradnja.fsb.hr/vol-76-no-4-76407</a></td></tr>
+      <tr><th>Доступ</th><td>открытый; лицензия Creative Commons Attribution (CC BY)</td></tr>
+      <tr><th>Ключевые слова</th><td class="en nobar">Planing hull; Computational fluid dynamics; Finite-element analysis; Wave load; Structural strength</td></tr>
+    </tbody>
+  </table>
+
+  <p><b>О чём статья, в двух фразах.</b> Авторы оценивают прочность корпуса
+  быстроходного глиссирующего катера, для которого эмпирические формулы правил
+  подходят плохо. Давление на днище считают средствами вычислительной
+  гидродинамики, переносят его на конечно-элементную модель корпуса и
+  сравнивают полученные напряжения с теми, что дают нормативные формулы.</p>
+
+  <p><b>Строение статьи.</b> Восемь разделов:
+  <i class="en nobar">Introduction — Numerical method — Numerical model —
+  Numerical setup — Calculation and loading of the empirical load —
+  Hydrodynamic-based total strength evaluation — Comparative analysis —
+  Conclusions</i>. Отдельного <i>Discussion</i> нет: седьмой раздел, сравнение
+  двух методик, и есть обсуждение. Это тот самый случай, о котором говорилось
+  в первом разделе страницы.</p>
+
+  <h3>Цитата 1 — из аннотации</h3>
+  <div class="en">“This study employs a one-way coupling method based on CFD
+  and FEA to evaluate and compare the structural strength of a planing hull
+  under calm water and wave navigation conditions.”</div>
+  <p>Классическое предложение-задача: <i>this study employs …
+  to evaluate and compare …</i>. Настоящее время, действительный залог,
+  подлежащее — сама работа, а не авторы. Инфинитив цели <i>to evaluate and
+  compare</i> отвечает на вопрос «зачем применён метод»; два однородных
+  инфинитива идут под одним <i>to</i>. Предлог <i>under</i> при условиях
+  плавания — устойчивый: <i>under calm water conditions</i>, а не <i>in</i>.</p>
+
+  <h3>Цитата 2 — из введения</h3>
+  <div class="en">“Unlike conventional ships, the flotation attitude and wave
+  impact load distribution on the bottom of a planing hull change with speed,
+  making the pressure distribution on the hull bottom critical for strength
+  evaluation.”</div>
+  <p>Здесь три ходовых приёма научной прозы сразу. Первый — <i>unlike</i> в
+  начале предложения: так вводят отличие своего объекта от привычного. Второй —
+  цепочка существительных <i>wave impact load distribution</i>: четыре слова
+  подряд, читать их надо справа налево, «распределение нагрузки от удара
+  волны». Третий — причастный оборот следствия <i>making … critical</i>: он
+  заменяет придаточное <i>which makes …</i> и всегда относится ко всей
+  предыдущей части предложения. Обратите также внимание на <i>change with
+  speed</i>: предлог <i>with</i> означает «по мере изменения», а не
+  «вместе со скоростью».</p>
+
+  <h3>Цитата 3 — из раздела о методе</h3>
+  <div class="en">“This implements a one-way coupled approach wherein
+  CFD-derived pressures unidirectionally drive FEA, without structural
+  deformation feedback to the fluid domain.”</div>
+  <p>Слово <i>wherein</i> — книжный вариант <i>in which</i>; в статьях
+  встречается постоянно, в устной речи не употребляется. Определение
+  <i>CFD-derived</i> построено по очень продуктивной модели «источник + причастие
+  на <i>-ed</i>»: <i>model-derived, wave-induced, welding-induced</i>. Оборот
+  <i>without … feedback</i> сообщает главное ограничение метода: обратной связи
+  нет, деформация конструкции на течение не влияет. Именно такие оговорки надо
+  выписывать при первом проходе.</p>
+
+  <h3>Цитата 4 — из раздела о проверке сетки</h3>
+  <div class="en">“Considering both the computational accuracy and resource
+  cost, the medium grid was chosen as the optimal grid for structural strength
+  evaluation of the planing hull based on the hydrodynamic method.”</div>
+  <p>Независимый причастный оборот <i>considering …</i> в начале предложения
+  переводится «учитывая…, принимая во внимание…». Конструкция <i>be chosen
+  as</i> — «быть выбранным в качестве». Проверка сходимости по сетке —
+  обязательный раздел любой расчётной статьи: если его нет, доверять числам
+  нельзя. Ищите в нём слова <i>grid independence</i>, <i>coarse, medium,
+  fine</i>, <i>the difference between the medium and the fine grid</i>.</p>
+
+  <h3>Цитата 5 — из результатов</h3>
+  <div class="en">“The maximum stress approximately doubles under the three
+  speeds. Consequently, the hull's structural strength fully meets the
+  requirements for calm water navigation.”</div>
+  <p>Глагол <i>to double</i> здесь непереходный — «удваиваться»; тот же глагол
+  бывает и переходным (<i>to double the thickness</i>). Наречие
+  <i>approximately</i> перед ним — обязательная осторожность. Второе предложение
+  показывает связку <i>consequently</i> («следовательно») и устойчивое
+  <i>to meet the requirements</i> — «удовлетворять требованиям»: именно
+  <i>meet</i>, а не <i>answer</i> и не <i>satisfy to</i>.</p>
+
+  <h3>Цитата 6 — из сравнительного анализа</h3>
+  <div class="en">“The hydrodynamic method yields a maximum plate stress of
+  31.416 MPa in calm water conditions, which is only 5.82 % lower than the
+  33.359 MPa obtained from the standard formula method.”</div>
+  <p>Образец предложения с числом, который стоит выучить целиком. Глагол
+  <i>to yield</i> — «давать (результат)», обычный для расчётных статей.
+  Конструкция <i>a stress of 31.416 MPa</i> требует предлога <i>of</i> между
+  величиной и её значением. Сравнение построено как <i>X per cent lower
+  than Y</i>; слово <i>only</i> перед процентом — авторская оценка: разница
+  мала, значит методы согласуются. Причастие <i>obtained from</i> заменяет
+  придаточное <i>which was obtained from</i>.</p>
+
+  <h3>Цитата 7 — из выводов</h3>
+  <div class="en">“The CFD-based wave load calculation method effectively
+  captures complex nonlinear phenomena, such as free surface breaking and
+  splashing.”</div>
+  <p>Вывод дан в настоящем времени и в действительном залоге — так говорят о
+  свойстве метода вообще, а не о том, что случилось в одном расчёте. Цепочка
+  <i>CFD-based wave load calculation method</i> — пять слов, снова читаем
+  справа налево: «метод расчёта волновой нагрузки на основе вычислительной
+  гидродинамики». Оборот <i>such as</i> вводит примеры и запятой отделяется
+  только тогда, когда примеры не сужают смысл, как здесь.</p>
+
+  <details class="q"><summary>Задание к статье: попробуйте сами</summary>
+    <p>Откройте статью по ссылке (полный текст свободно доступен в формате PDF)
+    и сделайте первый проход по схеме из третьего раздела: заглавие, аннотация,
+    заголовки, подписи к рисункам, выводы. Затем ответьте по-английски.</p>
+    <p class="en nobar">1. What kind of ship is studied, and why do the usual
+    Rules not fit it well? 2. What are the two numerical tools that the authors
+    couple, and in which direction does the coupling work?
+    3. Which loading case turned out to be the critical one?
+    4. How large is the difference between the two methods in calm water?
+    5. Find one sentence in the Conclusions that contains a hedge.
+    6. Under which licence may you reuse a figure from this paper, and what
+    must you do when you reuse it?</p>
+    <p class="muted">Ответ на шестой вопрос: лицензия CC BY разрешает
+    использовать материал, в том числе рисунки, при условии ссылки на авторов,
+    название статьи, журнал и лицензию.</p>
+  </details>
+
+  <h2>Типичные ошибки</h2>
+  <table class="gram">
+    <thead><tr><th>Неверно</th><th>Верно</th><th>Почему</th></tr></thead>
+    <tbody>
+      <tr><td class="en nobar">The results prove our hypothesis.</td><td class="en nobar">The results support our hypothesis.</td><td>в технике доказывают редко; <i>support</i> честнее</td></tr>
+      <tr><td class="en nobar">In the Fig. 5 we see …</td><td class="en nobar">Figure 5 shows …</td><td>перед <i>Figure 5</i> артикль не ставится</td></tr>
+      <tr><td class="en nobar">Tu et al. showed that the stress is 31 MPa in 2025.</td><td class="en nobar">Tu et al. [7] showed that the stress was 31 MPa.</td><td>ссылка идёт сразу за фамилией, чужой результат — в прошедшем</td></tr>
+      <tr><td class="en nobar">et. al.</td><td class="en nobar">et al.</td><td>точка только после сокращённого <i>al</i></td></tr>
+      <tr><td class="en nobar">a stress 31 MPa</td><td class="en nobar">a stress of 31 MPa</td><td>величина и значение соединяются через <i>of</i></td></tr>
+      <tr><td class="en nobar">The method meets to the requirements.</td><td class="en nobar">The method meets the requirements.</td><td><i>meet</i> переходный, предлог не нужен</td></tr>
+      <tr><td class="en nobar">five point eighty-two per cent</td><td class="en nobar">five point eight two per cent</td><td>после точки цифры называют по одной</td></tr>
+      <tr><td class="en nobar">The datas are given in Table 3.</td><td class="en nobar">The data are given in Table 3.</td><td><i>data</i> — уже множественное число</td></tr>
+      <tr><td class="en nobar">This is depended on the speed.</td><td class="en nobar">This depends on the speed.</td><td><i>depend</i> не бывает в страдательном залоге</td></tr>
+      <tr><td class="en nobar">The article is devoted to the strength.</td><td class="en nobar">The paper deals with the strength.</td><td>калька с русского; в журналах пишут <i>paper</i></td></tr>
+      <tr><td class="en nobar">Copy a paragraph into your review.</td><td class="en nobar">Quote one sentence and give the source.</td><td>даже при лицензии CC BY чужой текст берут в кавычки</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Слова темы</h2>
+  <div class="wordbox" data-page="tb-paper"></div>
+
+  <h2>Тренажёры</h2>
+  <p>Четыре задания: разделы статьи, стратегия трёх проходов, сила
+  формулировки и язык ссылок. Проверенное сохраняется в браузере.</p>
+  <div id="tasks"></div>
+
+  <div class="chapnav">
+    <span><a href="tb-talk">← доклад на конференции</a></span>
+    <span><a href="tech">в начало раздела →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="lib/endict.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/tasks-biz.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'tb-paper', size: 4 });
+</script>
+</body>
+</html>
