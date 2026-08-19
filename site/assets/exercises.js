@@ -239,8 +239,9 @@
       b.className = 'tok'; b.type = 'button'; b.textContent = w;
       b.addEventListener('click', () => {
         if (b.disabled) return;
-        b.remove();
+        /* «дом» определяем до удаления: после remove() parentNode уже пуст */
         const home = b.parentNode === bank ? slot : bank;
+        b.remove();
         home.appendChild(tok(w, bank, slot));
       });
       return b;
@@ -276,6 +277,27 @@
       + right.map((r) => '<option value="' + esc(r) + '">' + esc(r) + '</option>').join('')
       + '</select></div>').join('') + '</div>';
     markAll(body);
+    /* Уже выбранные варианты помечаем: в длинном списке иначе не видно, что
+       осталось свободным, и один и тот же перевод уходит сразу в две строки. */
+    const sels = [...body.querySelectorAll('.tk-match select')];
+    function markUsed() {
+      const used = new Map();
+      sels.forEach((s) => { if (s.value) used.set(s.value, (used.get(s.value) || 0) + 1); });
+      sels.forEach((s) => {
+        s.classList.toggle('filled', !!s.value);
+        s.classList.toggle('dup', !!s.value && used.get(s.value) > 1);
+        [...s.options].forEach((o) => {
+          if (!o.value) return;
+          const taken = used.has(o.value) && o.value !== s.value;
+          o.classList.toggle('used', taken);
+          const hasMark = o.textContent.charAt(0) === '✓';
+          if (taken && !hasMark) o.textContent = '✓ ' + o.textContent;
+          if (!taken && hasMark) o.textContent = o.textContent.slice(2);
+        });
+      });
+    }
+    sels.forEach((s) => s.addEventListener('change', markUsed));
+    markUsed();
     return {
       check() {
         const notes = [];

@@ -552,71 +552,10 @@ table.gram td.en { font-family: Georgia, serif; }
   .tasks .tk-top { position: static; }
 }
 
-/* ---------- практикум: банки заданий (task.js) ---------- */
-.tasks .blocks { margin: 10px 0 14px; }
-.tasks .chip { min-width: 30px; text-align: center; cursor: pointer; }
-.tasks .chip.full { background: #e9f5ec; border-color: #bcd9c2; color: #17632f; }
-.tasks .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-.task {
-  border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px;
-  margin: 12px 0; background: var(--paper);
-}
-.task.good { border-color: #bcd9c2; }
-.task.poor { border-color: #eec6c2; }
-.task .thead { display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: baseline;
-  font: 13px system-ui, sans-serif; color: var(--muted); }
-.task .tnum { font-weight: 700; color: var(--accent); }
-.task .tkind { margin-left: auto; background: var(--chip); border-radius: 999px; padding: 1px 9px; }
-.task .tru { font: 15px/1.5 system-ui, sans-serif; margin: 7px 0 4px; }
-.task .tbody .prompt { font: 18px/1.6 Georgia, serif; margin: 8px 0; }
-.task input[type=text] {
-  font: 16px Georgia, serif; padding: 3px 8px; border: 1px solid var(--line);
-  border-radius: 7px; min-width: 8em; max-width: 100%;
-}
-.task input[type=text].gapin { min-width: 7em; width: 8em; border-width: 0 0 2px 0; border-radius: 0;
-  background: #fffdf7; }
-.task input[type=text].ok { background: #e3f2e7; border-color: #8fc79f; color: #17632f; }
-.task input[type=text].bad { background: #fbe7e5; border-color: #e0a49c; color: #9c2b22; }
-.task .opt.sel { border-color: var(--accent); color: var(--accent); font-weight: 600; }
-.task .fb { margin-top: 10px; border-radius: 10px; padding: 9px 14px; font: 14.5px/1.55 system-ui, sans-serif; }
-.task .fb.ok { background: #e9f5ec; border: 1px solid #bcd9c2; }
-.task .fb.bad { background: #fdeeee; border: 1px solid #eec6c2; }
-.task .fb .why { color: #46464e; margin-top: 3px; }
-.task .whynot ul, .task .keylist { margin: 4px 0 0; padding-left: 20px; }
-.task .keylist li { margin: 2px 0; }
-.task .key { margin-top: 6px; padding-top: 5px; border-top: 1px dashed var(--line); }
-.task .key .en { font-family: Georgia, serif; }
-.task table.pairs { width: 100%; border-collapse: collapse; margin: 8px 0; }
-.task table.pairs td { border: 1px solid var(--line); padding: 5px 9px; vertical-align: middle; }
-.task table.pairs td.l { font: 16px Georgia, serif; }
-.task table.pairs tr.ok td { background: #f0f8f2; }
-.task table.pairs tr.bad td { background: #fdf2f1; }
-.task table.pairs select { font: 14.5px system-ui, sans-serif; padding: 4px 6px; max-width: 100%;
-  border: 1px solid var(--line); border-radius: 7px; background: #fff; }
-.task .sortrow { display: flex; gap: 8px 14px; flex-wrap: wrap; align-items: center;
-  padding: 5px 8px; border-radius: 8px; }
-.task .sortrow.ok { background: #f0f8f2; }
-.task .sortrow.bad { background: #fdf2f1; }
-.task .sortrow .sl { font: 16px Georgia, serif; min-width: 9em; }
-.task .sortrow .sg { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
-.task .sortrow .chip { cursor: pointer; }
-.task .sortrow .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-.task .sortrow .chip.right { box-shadow: inset 0 0 0 2px #8fc79f; }
-.task .tokens { display: flex; gap: 7px; flex-wrap: wrap; margin: 8px 0; min-height: 40px; }
-.task .tok { font: 15px Georgia, serif; padding: 5px 11px; border: 1px solid var(--line);
-  border-radius: 8px; background: #fff; cursor: pointer; }
-.task .tok:hover { border-color: var(--accent); }
-.task .tok:disabled { cursor: default; opacity: .75; }
-.task .slot { border: 1px dashed var(--line); border-radius: 8px; min-height: 42px; padding: 4px 6px;
-  display: flex; gap: 7px; flex-wrap: wrap; align-items: center; background: #fffdf7; }
-.task .slot:empty::after { content: 'соберите высказывание здесь'; color: var(--muted);
-  font: 13.5px system-ui, sans-serif; padding: 6px; }
-.task .row { display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; margin: 10px 0 0; }
 
-@media (max-width: 560px) {
-  .task { padding: 10px 12px; }
-  .task .tkind { margin-left: 0; }
-  .task .sortrow .sg { margin-left: 0; }
-  .task .sortrow .sl { min-width: 0; }
-  .task .tbody .prompt { font-size: 16.5px; }
-}
+/* Соотнесение: занятые варианты видно сразу — выбранная строка подсвечена,
+   уже использованный вариант в других списках помечен галочкой и приглушён,
+   а повтор одного варианта в двух строках выделяется предупреждающим цветом. */
+table.pairs select.filled, .tk-match select.filled { border-color: #1a7f37; background: #f2f9f4; }
+table.pairs select.dup, .tk-match select.dup { border-color: #b3382e; background: #fdf2f1; }
+table.pairs option.used, .tk-match option.used { color: #9a9aa2; }
