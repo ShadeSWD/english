@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Карточки — Английский язык для кораблестроителей</title>
-<meta name="description" content="Тренажёр «карточки» с интервальным повторением: слово курса и его перевод в обе стороны, произношение, транскрипция и пример. Прогресс сохраняется в браузере.">
+<meta name="description" content="Тренажёр «карточки» с интервальным повторением: любое слово сайта — первая тысяча слов ступени «с нуля» или словарь курса — и его перевод в обе стороны, произношение, транскрипция и пример. Свой график повторений; прогресс сохраняется в браузере.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -16,29 +16,39 @@
   <div class="tldr">
     <h2>Коротко</h2>
     <ul>
+      <li>Карточки берутся из всего словаря сайта: первая тысяча слов ступени
+      «с нуля» и словарь курса. Набор ограничивается ступенью и темой.</li>
       <li>На лицевой стороне английское слово (или русский перевод), на
       обороте — транскрипция, часть речи и значение.</li>
       <li>Отвечайте честно: «знал» отодвигает слово на 1, 2, 4, 8 или 16 дней,
       «не знал» возвращает его в ближайший подход.</li>
+      <li>Тренажёр ведёт свой график повторений: под настройками видно,
+      сколько слов ждёт сегодня, сколько ещё не начато и когда подойдут
+      отложенные.</li>
       <li>Английская сторона произносится автоматически; кнопка «произнести»
       повторяет.</li>
-      <li>Можно ограничить набор темой — например, только машинное отделение.</li>
     </ul>
   </div>
 
   <div class="controls">
+    <label>ступень
+      <select id="level">
+        <option value="">весь словарь сайта</option>
+      </select></label>
+    <label>тема <select id="topic"><option value="">все темы</option></select></label>
     <label>направление
       <select id="mode">
         <option value="en2ru">английское слово → перевод</option>
         <option value="ru2en">перевод → английское слово</option>
         <option value="mix">вперемешку</option>
       </select></label>
-    <label>тема <select id="topic"><option value="">все темы</option></select></label>
     <label>карточек <select id="total">
       <option>10</option><option>15</option><option>20</option></select></label>
+    <label><input type="checkbox" id="onlydue"> только то, что пора повторить</label>
     <button class="btn primary" type="button" id="go">начать подход</button>
   </div>
 
+  <div id="plan"></div>
   <div id="drill"></div>
 
   <div class="note tip">Слово «не знал» — не ошибка, а сигнал тренажёру.
@@ -51,25 +61,81 @@
   </div>
 </main>
 <script src="assets/vocab.js"></script>
+<script src="assets/vocab-a1.js"></script>
 <script src="lib/endict.js"></script>
 <script src="assets/speak.js"></script>
 <script src="assets/lists.js"></script>
 <script src="assets/drill.js"></script>
 <script>
 (function () {
-  var sel = document.getElementById('topic');
-  Object.keys(TOPICS).forEach(function (k) {
+  var zero = window.ZERO_TOPICS || {};
+  var levels = window.LEVELS || {};
+  var selT = document.getElementById('topic');
+  var selL = document.getElementById('level');
+
+  /* ступени: сперва «с нуля», в конце словарь курса */
+  ['A0', 'A1', 'course'].forEach(function (k) {
+    if (!levels[k]) return;
     var o = document.createElement('option');
-    o.value = k; o.textContent = TOPICS[k]; sel.appendChild(o);
+    o.value = k; o.textContent = levels[k]; selL.appendChild(o);
   });
+
+  /* темы двумя группами: первая тысяча слов и словарь курса */
+  function group(label, keys) {
+    if (!keys.length) return;
+    var g = document.createElement('optgroup');
+    g.label = label;
+    keys.forEach(function (k) {
+      var o = document.createElement('option');
+      o.value = k;
+      o.textContent = TOPICS[k].replace(/^С нуля: /, '');
+      g.appendChild(o);
+    });
+    selT.appendChild(g);
+  }
+  var all = Object.keys(TOPICS);
+  group('первая тысяча слов', all.filter(function (k) { return zero[k]; }));
+  group('словарь курса', all.filter(function (k) { return !zero[k]; }));
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function when(ts) {
+    var d = new Date(ts);
+    return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + ' в ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+  /* Панель графика повторений: тренажёр показывает, что он помнит о наборе. */
+  function plan(p) {
+    var box = document.getElementById('plan');
+    var rows = p.boxes.map(function (n, i) {
+      return '<tr><td>' + (i === 0 ? 'новые и забытые' : 'коробка ' + i)
+        + '</td><td class="num">' + n + '</td><td>'
+        + (i === 0 ? 'спрашиваются в ближайшем подходе'
+          : 'следующий показ через ' + p.steps[i] + ' дн.') + '</td></tr>';
+    }).join('');
+    box.innerHTML = '<details class="q" open><summary>График повторений по этому набору</summary>'
+      + '<p class="muted">Слов в наборе: <b>' + p.total + '</b>. Пора повторить: <b>'
+      + p.due + '</b>. Ещё не начато: <b>' + p.fresh + '</b>. Отложено на потом: <b>'
+      + p.later + '</b>. Уверенно знаете: <b>' + p.learned + '</b>.'
+      + (p.next ? ' Ближайшее отложенное слово вернётся ' + when(p.next) + '.' : '')
+      + '</p><table class="dt"><thead><tr><th>ступень повторения</th>'
+      + '<th class="num">слов</th><th>когда спросят</th></tr></thead><tbody>'
+      + rows + '</tbody></table>'
+      + '<p class="muted">График хранится в этом браузере и переживает '
+      + 'перезагрузку страницы.</p></details>';
+  }
+
   function run() {
-    var t = sel.value;
+    var t = selT.value, l = selL.value;
+    var name = t ? TOPICS[t] : (l ? LEVELS[l] : 'весь словарь сайта');
+    plan(DRILL.srsPlan(DRILL.pickWords({ level: l, topic: t })));
     DRILL.cards(document.getElementById('drill'), {
       section: 'cards',
       mode: document.getElementById('mode').value,
       total: parseInt(document.getElementById('total').value, 10),
-      filter: t ? function (e) { return e.topic === t; } : null,
-      title: 'Карточки' + (t ? ': ' + TOPICS[t] : ''),
+      level: l,
+      topic: t,
+      onlyDue: document.getElementById('onlydue').checked,
+      onPlan: plan,
+      title: 'Карточки: ' + name,
     });
   }
   document.getElementById('go').addEventListener('click', run);

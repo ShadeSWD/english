@@ -48,7 +48,7 @@
     return r;
   }
   /* Слова к повторению: сперва просроченные, затем новые, затем остальные. */
-  function srsPick(list, n) {
+  function srsSplit(list) {
     const s = srs(), now = Date.now();
     const due = [], fresh = [], later = [];
     list.forEach((e) => {
@@ -58,8 +58,38 @@
       else later.push(e);
     });
     due.sort((a, b) => (s[a.w].due - s[b.w].due));
-    shuffle(fresh);
-    return due.concat(fresh, later).slice(0, n);
+    return { due, fresh, later };
+  }
+  function srsPick(list, n, onlyDue) {
+    const p = srsSplit(list);
+    shuffle(p.fresh);
+    const q = p.due.concat(p.fresh, onlyDue ? [] : p.later);
+    return q.slice(0, n);
+  }
+  /* График повторений по заданному набору слов: сколько ждёт сегодня,
+     сколько ещё не начато, как слова разложены по коробкам Лейтнера и когда
+     подойдёт ближайшее отложенное. Этим живёт панель на странице карточек. */
+  function srsPlan(list) {
+    const s = srs();
+    const p = srsSplit(list);
+    const boxes = STEP.map(() => 0);
+    let next = 0;
+    list.forEach((e) => {
+      const r = s[e.w];
+      if (!r) return;
+      boxes[Math.min(r.box, boxes.length - 1)] += 1;
+      if (r.due > Date.now() && (!next || r.due < next)) next = r.due;
+    });
+    return {
+      total: list.length,
+      due: p.due.length,
+      fresh: p.fresh.length,
+      later: p.later.length,
+      learned: list.filter((e) => s[e.w] && s[e.w].box >= 3).length,
+      boxes,
+      steps: STEP.slice(),
+      next,
+    };
   }
 
   /* ---------- утилиты ---------- */
@@ -179,10 +209,29 @@
   };
   Runner.prototype.start = function () { this.next(); };
 
-  /* ---------- 1. карточки «слово ↔ перевод» ---------- */
+  /* ---------- 1. карточки «слово ↔ перевод» ----------
+   * Набор слов задаётся тремя независимыми ситами:
+   *   opts.level  — ступень: 'A0', 'A1' (первая тысяча слов) или 'course'
+   *                 (словарь курса, у таких слов поля lvl нет);
+   *   opts.topic  — ключ темы из TOPICS;
+   *   opts.filter — произвольная функция, если нужно что-то своё.
+   * opts.onlyDue берёт только просроченные и ещё не начатые слова. */
+  function pickWords(opts) {
+    opts = opts || {};
+    return vocab((e) => {
+      if (opts.level && (opts.level === 'course' ? !!e.lvl : e.lvl !== opts.level)) return false;
+      if (opts.topic && e.topic !== opts.topic) return false;
+      return !opts.filter || opts.filter(e);
+    });
+  }
   function cards(host, opts) {
     opts = opts || {};
-    const list = vocab(opts.filter);
+    const list = pickWords(opts);
+    if (!list.length) {
+      host.innerHTML = '<p class="muted">В этом наборе нет слов: '
+        + 'снимите ограничение по теме или по ступени.</p>';
+      return null;
+    }
     const r = new Runner(host, {
       section: opts.section || 'cards',
       title: opts.title || 'Карточки с интервальным повторением',
@@ -228,7 +277,24 @@
       });
     };
     const origStart = r.start.bind(r);
-    r.start = function () { queue = srsPick(list, r.total); origStart(); };
+    r.start = function () {
+      queue = srsPick(list, r.total, opts.onlyDue);
+      /* Если к повторению подошло меньше слов, чем задумано в подходе,
+         добираем из того же набора: подход всё равно должен быть полным. */
+      if (queue.length < r.total) {
+        const have = new Set(queue.map((e) => e.w));
+        shuffle(list.slice()).forEach((e) => {
+          if (queue.length < r.total && !have.has(e.w)) { queue.push(e); have.add(e.w); }
+        });
+      }
+      if (opts.onPlan) opts.onPlan(srsPlan(list));
+      origStart();
+    };
+    const origVerdict = r.verdict.bind(r);
+    r.verdict = function (ok, correct, why) {
+      origVerdict(ok, correct, why);
+      if (opts.onPlan) opts.onPlan(srsPlan(list));
+    };
     r.start();
     return r;
   }
@@ -461,6 +527,6 @@
 
   window.DRILL = {
     cards, gaps, match, dictation, order, grammar,
-    stats, resetSection, srs, shuffle, sample, read, write,
+    stats, resetSection, srs, srsPlan, pickWords, shuffle, sample, read, write,
   };
 })();
