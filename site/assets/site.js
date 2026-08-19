@@ -1,0 +1,94 @@
+/* Каркас страниц курса «Английский язык для кораблестроителей»:
+ * шапка с группированной навигацией, подвал и общие SVG-маркеры стрелок. */
+'use strict';
+(function () {
+  const me = document.currentScript;
+  const root = (me && me.dataset.root) || './';
+  const page = (me && me.dataset.page) || '';
+  const logoSvg = `
+  <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+    <rect x="1" y="1" width="28" height="28" rx="6" fill="#9d174d"/>
+    <text x="15" y="22" text-anchor="middle" font-size="15">🗣️</text>
+  </svg>`;
+  const nav = [
+    { h: '', k: 'index', t: 'Обзор' },
+    { t: 'Юниты', h: 'units', drop: [
+      { h: 'units', k: 'units', t: 'Программа курса' },
+      { h: 'u1', k: 'units', t: '1. First things first' },
+      { h: 'u2', k: 'units', t: '2. Day in, day out' },
+      { h: 'u3', k: 'units', t: '3. A pass to success' },
+      { h: 'u4', k: 'units', t: '4. Alma mater' },
+      { h: 'u5', k: 'units', t: '5. Serving mankind' },
+      { h: 'u6', k: 'units', t: '6. Peter’s great creation' },
+      { h: 'u7', k: 'units', t: '7. In the brave new world' },
+    ] },
+    { t: 'Тексты', h: 'reading', drop: [
+      { h: 'reading', k: 'reading', t: 'Указатель текстов' },
+      { h: 'r-yard', k: 'reading', t: 'Building a ship' },
+      { h: 'r-welding', k: 'reading', t: 'Welding and joining' },
+      { h: 'r-drawing', k: 'reading', t: 'Drawings and standards' },
+    ] },
+    { t: 'Картинки', h: 'pictures', drop: [
+      { h: 'pictures', k: 'pictures', t: 'Все иллюстрации' },
+      { h: 'pic-ship', k: 'pictures', t: 'Части судна' },
+      { h: 'pic-yard', k: 'pictures', t: 'Верфь и постройка' },
+      { h: 'pic-engine', k: 'pictures', t: 'Машинное отделение' },
+      { h: 'pic-bridge', k: 'pictures', t: 'Мостик и навигация' },
+      { h: 'pic-tools', k: 'pictures', t: 'Инструменты и материалы' },
+    ] },
+    { t: 'Тренажёры', h: 'drills', drop: [
+      { h: 'drills', k: 'drills', t: 'Все тренажёры и прогресс' },
+      { h: 'd-cards', k: 'drills', t: 'Карточки с повторением' },
+      { h: 'd-gaps', k: 'drills', t: 'Пропущенное слово' },
+      { h: 'd-match', k: 'drills', t: 'Слово и картинка' },
+      { h: 'd-dictation', k: 'drills', t: 'Диктант на слух' },
+      { h: 'd-order', k: 'drills', t: 'Порядок слов' },
+      { h: 'd-grammar', k: 'drills', t: 'Грамматика юнитов' },
+    ] },
+    { h: 'vocab', k: 'vocab', t: 'Словарь' },
+    { h: 'sources', k: 'sources', t: 'Источники' },
+  ];
+  const navLink = (it) =>
+    `<a href="${root}${it.h}" class="${page === it.k ? 'on' : ''}">${it.t}</a>`;
+  const navHtml = nav.map((g) => {
+    if (!g.drop) return navLink(g);
+    const on = g.drop.some((it) => page === it.k) ? 'on' : '';
+    return `<span class="nav-drop"><a href="${root}${g.h}" class="${on}">${g.t} ▾</a>`
+      + `<span class="drop">${g.drop.map(navLink).join('')}</span></span>`;
+  }).join('');
+  const header = document.createElement('header');
+  header.className = 'site';
+  header.innerHTML = `<div class="wrap">
+    <a class="logo" href="${root}">${logoSvg}<span>English for shipbuilders</span></a>
+    <nav class="top">${navHtml}</nav>
+  </div>`;
+  document.body.prepend(header);
+  const onReady = (fn) => (document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', fn) : fn());
+  const footer = document.createElement('footer');
+  footer.className = 'site';
+  footer.innerHTML = `<div class="wrap">
+    <div>Учебный сайт по курсу «Иностранный язык» · 1–2 семестры · кафедра иностранных языков</div>
+    <div>Смежные курсы:
+      <a href="https://shadeswd.duckdns.org/shiptech/">технология судостроения</a> ·
+      <a href="https://shadeswd.duckdns.org/hullstruct/">конструкция корпуса</a> ·
+      <a href="https://shadeswd.duckdns.org/shiphist/">эволюция кораблестроения</a></div>
+  </div>`;
+  onReady(() => document.body.appendChild(footer));
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  defs.setAttribute('width', '0'); defs.setAttribute('height', '0');
+  defs.style.position = 'absolute';
+  defs.innerHTML = `<defs>
+    <marker id="arrE" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 z" fill="#16161a"/></marker>
+    <marker id="arrS" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto">
+      <path d="M10,0 L0,4 L10,8 z" fill="#16161a"/></marker>
+    <marker id="arrB" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#155e75"/></marker>
+    <marker id="arrR" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#b3382e"/></marker>
+    <marker id="arrG" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#1a7f37"/></marker>
+  </defs>`;
+  onReady(() => document.body.appendChild(defs));
+})();

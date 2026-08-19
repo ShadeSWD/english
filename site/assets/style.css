@@ -1,0 +1,471 @@
+/* Английский язык для кораблестроителей — стиль сайта (кластер учебных сайтов) */
+:root {
+  --bg: #f7f4f4;
+  --paper: #ffffff;
+  --ink: #1a1a1e;
+  --muted: #6b6b74;
+  --line: #ded7d7;
+  --accent: #9d174d;      /* фирменный «клюквенный» курса */
+  --accent2: #155e75;     /* синий чертежей и схем */
+  --green: #1a7f37;
+  --red: #b3382e;
+  --chip: #eee6e8;
+  --link: #155e75;
+  --shadow: 0 1px 3px rgba(20,20,30,.08), 0 8px 24px rgba(20,20,30,.06);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+/* фон: реплика диалога, раскрытая книга, якорь и волна */
+body {
+  margin: 0; background-color: var(--bg); background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='168'%20height='116'%20viewBox='0%200%20168%20116'%3E%3Cg%20fill='none'%20stroke='%239d174d'%20stroke-width='1.15'%20stroke-linejoin='round'%20stroke-linecap='round'%20opacity='0.12'%3E%3Cpath%20d='M14%2014h50a7%207%200%200%201%207%207v22a7%207%200%200%201-7%207H40l-11%2010V50H14a7%207%200%200%201-7-7V21a7%207%200%200%201%207-7z'/%3E%3Cpath%20d='M22%2032h7M38%2032h7M54%2032h7'/%3E%3Cpath%20d='M104%2018c9-6%2020-6%2027%200%207-6%2018-6%2027%200v28c-9-6-20-6-27%200-7-6-18-6-27%200z'/%3E%3Cpath%20d='M131%2018v28'/%3E%3Cpath%20d='M0%2092c10-8%2020%208%2030%200s20%208%2030%200%2020%208%2030%200%2020%208%2030%200%2020%208%2030%200%2020%208%2018%200'/%3E%3Cpath%20d='M84%2062v26M76%2070h16'/%3E%3Cpath%20d='M72%2082a12%2012%200%200%200%2024%200'/%3E%3Ccircle%20cx='84'%20cy='58'%20r='4'/%3E%3C/g%3E%3C/svg%3E"); color: var(--ink);
+  font: 16px/1.55 Georgia, 'Times New Roman', serif;
+}
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--accent); }
+code { font-family: ui-monospace, Consolas, monospace; font-size: .92em; background: var(--chip); padding: 1px 5px; border-radius: 4px; }
+
+.wrap { max-width: min(1600px, 96vw); margin: 0 auto; padding: 0 20px; }
+
+/* шапка */
+header.site {
+  background: var(--paper); border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 30;
+}
+header.site .wrap { display: flex; align-items: center; gap: 18px; min-height: 56px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; color: var(--ink); font-size: 17px; }
+.logo svg { display: block; }
+nav.top { display: flex; gap: 4px 14px; flex-wrap: wrap; font-size: 15px; font-family: system-ui, sans-serif; }
+nav.top a { text-decoration: none; color: var(--muted); padding: 4px 2px; border-bottom: 2px solid transparent; }
+nav.top a.on, nav.top a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+.nav-drop { position: relative; display: inline-block; }
+.nav-drop .drop {
+  display: none; position: absolute; left: -10px; top: 100%; z-index: 40;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 6px 0; min-width: 210px;
+}
+.nav-drop:hover .drop, .nav-drop:focus-within .drop { display: block; }
+.nav-drop .drop a {
+  display: block; padding: 7px 16px; border-bottom: none; white-space: nowrap;
+}
+.nav-drop .drop a:hover, .nav-drop .drop a.on { background: #eef3ff; color: var(--ink); }
+
+h1 { font-size: 30px; line-height: 1.25; margin: 26px 0 6px; }
+h2 { font-size: 23px; margin: 34px 0 8px; }
+h3 { font-size: 18px; margin: 22px 0 6px; }
+.lead { font-size: 18px; color: #3d3d44; max-width: 60em; }
+.small, .muted { color: var(--muted); font-size: 14px; font-family: system-ui, sans-serif; }
+.note {
+  background: #fbf7ea; border: 1px solid #e7dcb8; border-radius: 10px;
+  padding: 10px 14px; margin: 14px 0; font-size: 15px;
+}
+.tip { background: #eef3ff; border-color: #c9d6f2; }
+.warn { background: #fdeeee; border-color: #eec6c2; }
+
+/* карточки */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 18px 0; }
+.card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 6px;
+}
+.card h3 { margin: 0; }
+.card p { margin: 0; font-size: 14.5px; color: #46464e; }
+.card .go { margin-top: auto; padding-top: 8px; font-family: system-ui, sans-serif; font-size: 14px; }
+.card.demo { border-left: 4px solid var(--accent); }
+
+/* панель с доской */
+.panel {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow); padding: 14px; margin: 18px 0;
+}
+.panel .caption { font-size: 14px; color: var(--muted); font-family: system-ui, sans-serif; margin-top: 6px; }
+.boards { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-start; }
+.boards > div { flex: 1 1 340px; min-width: 0; }
+
+/* SVG-доска */
+svg.geo-board {
+  width: 100%; height: auto; display: block;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  touch-action: none; user-select: none;
+}
+/* служебные слои не перехватывают мышь (подписи/размеры/анимация поверх ручек) */
+.layer-aux, .layer-link, .layer-labels, .layer-accent, .layer-anim { pointer-events: none; }
+.ln { stroke: #16161a; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.ln-thin { stroke: #16161a; stroke-width: 1; fill: none; }
+.ln-axis { stroke: #101014; stroke-width: 2.8; fill: none; }
+.ln-link { stroke: #b9b9c0; stroke-width: .9; fill: none; }
+.ln-dash { stroke-dasharray: 6 5; }
+.ln-dim { stroke: #16161a; stroke-width: 1; fill: none; marker-start: url(#arrS); marker-end: url(#arrE); }
+/* Палитра схем курса строго пятицветная:
+   #16161a основной, #155e75 синий, #b3382e красный, #1a7f37 зелёный, #6b6b74 серый. */
+.red  { stroke: #b3382e; }
+.blue { stroke: #155e75; }
+.green{ stroke: #1a7f37; }
+.gray { stroke: #6b6b74; }
+.fill-soft { fill: rgba(21,94,117,.07); }
+.fill-red  { fill: rgba(179,56,46,.08); }
+.fill-green{ fill: rgba(26,127,55,.10); }
+.fill-gray { fill: rgba(107,107,116,.09); }
+.fill-white{ fill: #ffffff; }
+.pt { fill: #16161a; stroke: none; }
+.pt.red { fill: #b3382e; } .pt.blue { fill: #155e75; } .pt.green { fill: #1a7f37; }
+.pt.gray { fill: #6b6b74; }
+.pt.open { fill: #fff; stroke: #16161a; stroke-width: 1.4; }
+/* подписи на схемах — 11px system-ui, как принято в кластере */
+.lbl { font: 11px system-ui, sans-serif; fill: #16161a; paint-order: stroke; stroke: #ffffffcc; stroke-width: 2.6px; }
+.lbl.b { font-weight: 600; }
+.lbl.red { fill: #b3382e; } .lbl.blue { fill: #155e75; } .lbl.green { fill: #1a7f37; }
+.lbl.gray { fill: #6b6b74; }
+.lbl-axis { font: 11px system-ui, sans-serif; fill: #16161a; }
+.lbl-dim { font: 600 11px system-ui, sans-serif; fill: #16161a; }
+
+/* ручки перетаскивания */
+.handle { cursor: grab; }
+.handle.drag { cursor: grabbing; }
+.handle-halo { fill: rgba(43,79,160,.10); stroke: rgba(43,79,160,.35); stroke-width: 1; stroke-dasharray: 2 2; }
+.handle-core { fill: var(--accent2); stroke: #fff; stroke-width: 1.4; }
+.handle.red .handle-core { fill: var(--accent); }
+.handle.red .handle-halo { fill: rgba(179,56,46,.10); stroke: rgba(179,56,46,.4); }
+.handle.green .handle-core { fill: var(--green); }
+.handle:hover .handle-halo { fill: rgba(43,79,160,.2); }
+.handle.red:hover .handle-halo { fill: rgba(179,56,46,.2); }
+
+/* плеер шагов */
+.stepper { margin: 10px 0; font-family: system-ui, sans-serif; }
+.stepper-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.btn {
+  border: 1px solid var(--line); background: var(--paper); border-radius: 8px;
+  padding: 6px 12px; font: 14px system-ui, sans-serif; cursor: pointer; color: var(--ink);
+}
+.btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.btn.primary { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.btn.primary:hover { filter: brightness(1.1); color: #fff; }
+.st-dots { display: flex; gap: 4px; flex-wrap: wrap; }
+.st-dot {
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--line);
+  background: var(--paper); font: 12px system-ui, sans-serif; cursor: pointer; color: var(--muted);
+}
+.st-dot.done { background: var(--chip); }
+.st-dot.on { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.st-body { margin-top: 8px; background: #f4f6fb; border: 1px solid #dfe5f2; border-radius: 10px; padding: 10px 14px; }
+.st-title { font-weight: 600; font-size: 15px; }
+.st-num { color: var(--accent2); }
+.st-text { font: 14.5px/1.5 system-ui, sans-serif; color: #3a3a42; margin-top: 3px; }
+.st-text a { color: var(--link); }
+
+/* контролы */
+.controls { display: flex; gap: 14px 22px; flex-wrap: wrap; align-items: center; margin: 10px 0; font-family: system-ui, sans-serif; font-size: 14px; }
+.controls label { display: flex; align-items: center; gap: 8px; }
+.controls input[type=range] { width: 150px; accent-color: var(--accent2); }
+.badge {
+  display: inline-block; border-radius: 999px; padding: 3px 12px; font: 600 13.5px system-ui, sans-serif;
+}
+.badge.ok { background: #e3f2e7; color: #17632f; border: 1px solid #bcdcc6; }
+.badge.bad { background: #fbe7e5; color: #9c2b22; border: 1px solid #eec6c2; }
+.readout { font: 600 14px ui-monospace, monospace; background: var(--chip); border-radius: 6px; padding: 2px 8px; }
+
+/* теоретические врезки и ссылки на теорию */
+.theory-link {
+  display: inline-block; background: #eef3ff; border: 1px solid #c9d6f2; border-radius: 999px;
+  padding: 2px 12px; font: 13.5px system-ui, sans-serif; text-decoration: none; margin: 2px 2px;
+}
+.theory-link::before { content: '§ '; color: var(--accent2); font-weight: 700; }
+
+/* история / галерея */
+.timeline { border-left: 3px solid var(--line); margin: 16px 0 16px 8px; padding-left: 22px; }
+.timeline .ev { margin: 14px 0; position: relative; }
+.timeline .ev::before {
+  content: ''; position: absolute; left: -29px; top: 6px; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--accent); border: 2px solid var(--bg);
+}
+.timeline .when { font: 700 14px system-ui, sans-serif; color: var(--accent); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 14px 0; }
+.gallery figure { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 8px; }
+.gallery img { width: 100%; height: auto; border-radius: 6px; display: block; }
+.gallery figcaption { font: 13px system-ui, sans-serif; color: var(--muted); padding: 6px 4px 2px; }
+
+/* библиография */
+ol.bib { padding-left: 24px; }
+ol.bib li { margin: 10px 0; }
+ol.bib .bib-url { font: 13px system-ui, sans-serif; }
+
+/* подвал */
+footer.site { border-top: 1px solid var(--line); margin-top: 48px; padding: 22px 0 34px; color: var(--muted); font-size: 14px; font-family: system-ui, sans-serif; }
+footer.site .wrap { display: flex; flex-wrap: wrap; gap: 10px 30px; justify-content: space-between; }
+
+@media (max-width: 720px) {
+  h1 { font-size: 24px; }
+  .boards > div { flex-basis: 100%; }
+}
+.dim { opacity: .32; }
+
+/* карточки-ссылки (оглавления) — без подчёркивания */
+a.card { text-decoration: none; color: inherit; }
+a.card:hover { border-color: var(--accent, #155e75); }
+a.card h3 { text-decoration: none; }
+
+/* ===== виртуальный опыт ===== */
+.virt-controls { display: flex; gap: 8px 10px; flex-wrap: wrap; align-items: center; margin: 12px 2px 4px; font-family: system-ui, sans-serif; font-size: 14px; }
+.virt-controls label { display: flex; align-items: center; gap: 8px; }
+.virt-controls input[type=range] { width: 170px; accent-color: #155e75; }
+.virt-controls .sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 4px; }
+.btn.take { background: #155e75; border-color: #155e75; color: #fff; }
+.btn.take:hover { filter: brightness(1.12); color: #fff; }
+.btn:disabled { opacity: .45; cursor: default; pointer-events: none; }
+.readout.big { font-size: 15px; padding: 4px 10px; }
+.virt-pass { display: flex; gap: 10px 14px; align-items: center; flex-wrap: wrap;
+  background: #eef3ff; border: 1px solid #c9d6f2; border-radius: 10px;
+  padding: 8px 14px; margin: 0 0 12px; font: 14.5px system-ui, sans-serif; }
+.virt-pass b { color: #155e75; }
+.virt-hint { font: 13.5px system-ui, sans-serif; color: var(--muted); margin: 6px 2px; }
+.virt-hint.alert { color: #b3382e; }
+svg .tap { cursor: pointer; }
+svg .tap circle.hit { fill: rgba(21,94,117,0); stroke: none; }
+svg .tap:hover circle.dot { r: 4; }
+
+
+/* кнопки авто-прогона виртуального опыта */
+.btn.auto { background: #eef6ef; border-color: #bcd9c2; font-weight: 600; }
+.btn.auto:hover { background: #dcecdf; }
+.btn.stop { background: #fdeeee; border-color: #eec6c2; font-weight: 600; }
+
+/* мобильная защита от горизонтального переполнения */
+main table { display: block; max-width: 100%; overflow-x: auto; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 2px 0 6px; }
+/* KaTeX дублирует формулу в MathML и прячет дубль абсолютным позиционированием,
+   но без left/top: пустой бокс 1×1 остаётся в конце широкой строки формулы и на
+   узком экране растягивает документ по горизонтали (сама формула прокручивается
+   внутри .katex-display и переполнения не даёт). Прижимаем дубль к началу. */
+.katex-mathml { position: absolute; clip: rect(1px,1px,1px,1px); width: 1px; height: 1px; overflow: hidden; left: 0 !important; top: 0 !important; }
+svg.geo-board { max-width: 100%; height: auto; }
+.controls label { max-width: 100%; flex-wrap: wrap; }
+.controls select, .controls input[type=number] { max-width: 100%; }
+main .readout, main .caption, main .small { overflow-wrap: anywhere; }
+main .note div, main .note span, main .steps div, main .out div { overflow-wrap: anywhere; }
+
+/* ===== элементы, специфичные для курса английского языка ===== */
+
+/* блок «Коротко» в начале каждой страницы */
+.tldr {
+  background: #fdf1f5; border: 1px solid #f0cad9; border-left: 4px solid var(--accent);
+  border-radius: 12px; padding: 12px 18px; margin: 16px 0 22px;
+}
+.tldr h2, .tldr h3 { margin: 0 0 6px; font-size: 17px; color: #86133f; }
+.tldr ul { margin: 6px 0 0; padding-left: 22px; }
+.tldr li { margin: 4px 0; }
+.tldr .keyf { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #f0cad9; }
+
+/* разобранная задача */
+.task {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: var(--shadow); padding: 14px 18px; margin: 18px 0;
+}
+.task > h3 { margin-top: 0; }
+.task .given { font: 14.5px/1.5 system-ui, sans-serif; color: #3a3a42; background: var(--chip);
+  border-radius: 8px; padding: 8px 12px; margin: 8px 0 12px; }
+.task .ans {
+  background: #eef6ef; border: 1px solid #bcd9c2; border-radius: 8px;
+  padding: 7px 12px; margin-top: 10px; font-size: 15.5px;
+}
+.task .ans b { color: #14622c; }
+
+/* шаг решения: формула = подстановка = результат */
+.step { margin: 10px 0; }
+.step .lead-in { font: 14.5px/1.5 system-ui, sans-serif; color: #46464e; margin-bottom: 2px; }
+.subst { color: #6b6b74; }
+.dims { font: 13.5px/1.5 system-ui, sans-serif; color: var(--muted); margin-top: 2px; }
+.dims::before { content: 'размерность: '; }
+
+/* живые расчёты */
+.calc {
+  background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--accent2);
+  border-radius: 12px; box-shadow: var(--shadow); padding: 14px 18px; margin: 18px 0;
+}
+.calc h3 { margin-top: 0; }
+.calc .row { display: flex; gap: 10px 18px; flex-wrap: wrap; align-items: center;
+  font: 14.5px system-ui, sans-serif; margin: 8px 0; }
+.calc label { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.calc input[type=text], .calc select {
+  font: 14.5px system-ui, sans-serif; padding: 4px 7px; border: 1px solid var(--line);
+  border-radius: 7px; background: #fff; color: var(--ink); max-width: 100%;
+}
+.calc input[type=text] { width: 8.5em; }
+.calc .out {
+  margin-top: 10px; background: #f2f7f9; border: 1px solid #cfe0e6; border-radius: 10px;
+  padding: 10px 14px; font: 14.5px/1.6 system-ui, sans-serif;
+}
+.calc .out b { font-size: 15.5px; }
+.calc .out .line { margin: 3px 0; }
+.calc .warnline { color: #9c2b22; }
+
+/* таблицы данных */
+table.dt { width: 100%; border-collapse: collapse; font: 14.5px system-ui, sans-serif; margin: 12px 0; }
+table.dt th, table.dt td { border-bottom: 1px solid var(--line); padding: 6px 9px; text-align: left; vertical-align: top; }
+table.dt th { background: var(--chip); font-weight: 600; }
+table.dt td.num, table.dt th.num { text-align: right; white-space: nowrap; }
+
+/* контрольные вопросы */
+details.q { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; margin: 8px 0; }
+details.q > summary { cursor: pointer; font: 600 15px system-ui, sans-serif; }
+details.q p { font-size: 15px; }
+
+/* навигация «предыдущая/следующая глава» */
+.chapnav { margin-top: 30px; padding-top: 12px; border-top: 1px solid var(--line);
+  font: 14.5px system-ui, sans-serif; display: flex; gap: 10px 24px; flex-wrap: wrap; justify-content: space-between; }
+
+/* ===== английский текст: кликабельные слова и чтение вслух ===== */
+
+/* Блок английского текста. Слова размечает speak.js во время загрузки. */
+.en { font-family: Georgia, 'Times New Roman', serif; }
+.en .w {
+  cursor: pointer; border-radius: 3px; padding: 0 1px; margin: 0 -1px;
+  transition: background-color .12s;
+}
+.en .w:hover { background: #fbe4ee; }
+.en .w.said { background: #f7c9dc; }
+.en .s.on { background: #fff3c4; border-radius: 4px; box-shadow: 0 0 0 2px #fff3c4; }
+.en.big { font-size: 17.5px; line-height: 1.7; }
+
+/* карточка слова */
+.wordcard {
+  position: absolute; z-index: 60; max-width: min(320px, 92vw);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: var(--shadow); padding: 10px 14px 12px;
+  font: 14.5px/1.5 system-ui, sans-serif;
+}
+.wordcard .hw { font: 600 17px Georgia, serif; color: var(--accent); }
+.wordcard .ipa { font: 14px ui-monospace, Consolas, monospace; color: var(--accent2); margin-left: 8px; }
+.wordcard .pos { color: var(--muted); font-size: 13px; font-style: italic; margin-left: 6px; }
+.wordcard .ru { margin-top: 4px; font-size: 15px; }
+.wordcard .ex { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); font-size: 13.5px; color: #46464e; }
+.wordcard .ex i { color: var(--muted); font-style: normal; display: block; }
+.wordcard .row2 { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.wordcard .btn { padding: 3px 10px; font-size: 13px; }
+.wordcard .nodict { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.wordcard .x { float: right; cursor: pointer; color: var(--muted); font-size: 18px; line-height: 1; padding: 0 2px; }
+
+/* панель чтения вслух */
+.readbar {
+  display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: center;
+  font: 13.5px system-ui, sans-serif; color: var(--muted); margin: 0 0 8px;
+}
+.readbar .btn { padding: 4px 11px; font-size: 13.5px; }
+.readbar .btn.speak { background: #fdf1f5; border-color: #f0cad9; color: #86133f; font-weight: 600; }
+.readbar .btn.speak:hover { background: #fbe4ee; color: #86133f; }
+.readbar input[type=range] { width: 116px; accent-color: var(--accent); }
+.readbar .rate { min-width: 3.2em; font: 600 13px ui-monospace, monospace; color: var(--ink); }
+
+/* предупреждение об отсутствии голоса */
+.voice-warn {
+  background: #fdeeee; border: 1px solid #eec6c2; border-radius: 10px;
+  padding: 8px 14px; margin: 10px 0; font: 14px system-ui, sans-serif; color: #8c2b22;
+}
+
+/* подписи-слова на иллюстрациях */
+svg .wlbl { cursor: pointer; }
+svg .wlbl text { paint-order: stroke; stroke: #ffffffcc; stroke-width: 2.6px; }
+svg .wlbl:hover text.en-lbl { fill: var(--accent); }
+svg text.en-lbl { font: 600 11px system-ui, sans-serif; fill: #16161a; }
+svg text.ru-lbl { font: 11px system-ui, sans-serif; fill: #6b6b74; }
+.plate-list { columns: 2 220px; column-gap: 26px; font: 14.5px system-ui, sans-serif; margin: 10px 0 0; padding-left: 20px; }
+.plate-list li { margin: 3px 0; break-inside: avoid; }
+.plate-list .en-w { cursor: pointer; font-weight: 600; color: var(--accent2); }
+.plate-list .en-w:hover { color: var(--accent); }
+
+/* ===== тренажёры ===== */
+.drill {
+  background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  border-radius: 12px; box-shadow: var(--shadow); padding: 14px 18px; margin: 18px 0;
+}
+.drill h3 { margin-top: 0; }
+.drill .prompt { font: 19px/1.5 Georgia, serif; margin: 8px 0 12px; }
+.drill .prompt .gap { display: inline-block; min-width: 6em; border-bottom: 2px solid var(--accent); }
+.drill .opts { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.drill .opt {
+  border: 1px solid var(--line); background: var(--paper); border-radius: 9px;
+  padding: 7px 14px; font: 15px system-ui, sans-serif; cursor: pointer; color: var(--ink);
+}
+.drill .opt:hover { border-color: var(--accent); color: var(--accent); }
+.drill .opt.ok { background: #e3f2e7; border-color: #8fc79f; color: #17632f; }
+.drill .opt.bad { background: #fbe7e5; border-color: #e0a49c; color: #9c2b22; }
+.drill .opt:disabled { cursor: default; }
+.drill input[type=text] {
+  font: 16px system-ui, sans-serif; padding: 6px 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; color: var(--ink); max-width: 100%; width: 15em;
+}
+.drill .fb { margin-top: 10px; border-radius: 10px; padding: 9px 14px; font: 14.5px/1.55 system-ui, sans-serif; }
+.drill .fb.ok { background: #e9f5ec; border: 1px solid #bcd9c2; }
+.drill .fb.bad { background: #fdeeee; border: 1px solid #eec6c2; }
+.drill .fb b { color: var(--accent2); }
+.drill .fb .why { color: #46464e; margin-top: 3px; }
+.drill .row { display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; margin: 10px 0; }
+.drill .tokens { display: flex; gap: 7px; flex-wrap: wrap; margin: 8px 0; min-height: 40px; }
+.drill .tok {
+  border: 1px solid var(--line); background: #fbf8f9; border-radius: 8px;
+  padding: 6px 12px; font: 15.5px Georgia, serif; cursor: pointer;
+}
+.drill .tok:hover { border-color: var(--accent); }
+.drill .slot { border: 1px dashed var(--line); border-radius: 8px; min-height: 42px; padding: 4px 6px;
+  display: flex; gap: 7px; flex-wrap: wrap; align-items: center; background: #fdfcfc; }
+.drill .slot:empty::after { content: 'соберите предложение здесь'; color: var(--muted); font: 13.5px system-ui, sans-serif; padding: 6px; }
+.drill .cardface {
+  background: #fdf1f5; border: 1px solid #f0cad9; border-radius: 12px; padding: 22px 18px;
+  text-align: center; font: 26px Georgia, serif; margin: 10px 0; min-height: 92px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+}
+.drill .cardface .sub { font: 14px system-ui, sans-serif; color: var(--muted); }
+.drill .cardface .ipa { font: 15px ui-monospace, monospace; color: var(--accent2); }
+.drill .pics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 10px 0; }
+.drill .pic {
+  border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 6px; cursor: pointer;
+}
+.drill .pic svg { width: 100%; height: auto; display: block; }
+.drill .pic:hover { border-color: var(--accent); }
+.drill .pic.ok { border-color: #8fc79f; background: #f0f8f2; }
+.drill .pic.bad { border-color: #e0a49c; background: #fdf2f1; }
+.progressbar { height: 8px; border-radius: 999px; background: var(--chip); overflow: hidden; margin: 6px 0; }
+.progressbar i { display: block; height: 100%; background: var(--accent); }
+.stats { font: 14px system-ui, sans-serif; color: var(--muted); display: flex; gap: 8px 18px; flex-wrap: wrap; }
+.stats b { color: var(--ink); }
+
+/* ===== словарь курса ===== */
+.vocab-bar { display: flex; gap: 8px 12px; flex-wrap: wrap; align-items: center; margin: 14px 0;
+  font: 14.5px system-ui, sans-serif; }
+.vocab-bar input[type=search] {
+  font: 15px system-ui, sans-serif; padding: 6px 11px; border: 1px solid var(--line);
+  border-radius: 9px; background: #fff; color: var(--ink); width: 16em; max-width: 100%;
+}
+.vocab-bar select { font: 14.5px system-ui, sans-serif; padding: 5px 8px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; color: var(--ink); max-width: 100%; }
+table.voc { width: 100%; border-collapse: collapse; font: 15px system-ui, sans-serif; margin: 10px 0; }
+table.voc th, table.voc td { border-bottom: 1px solid var(--line); padding: 7px 9px; text-align: left; vertical-align: top; }
+table.voc th { background: var(--chip); font-weight: 600; font-size: 14px; }
+table.voc td.w { font: 600 16px Georgia, serif; white-space: nowrap; cursor: pointer; color: var(--accent2); }
+table.voc td.w:hover { color: var(--accent); }
+table.voc td.ipa { font: 13.5px ui-monospace, monospace; color: var(--muted); white-space: nowrap; }
+table.voc td.pos { color: var(--muted); font-style: italic; font-size: 13.5px; }
+table.voc td.src a { font-size: 13.5px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+.chip {
+  border: 1px solid var(--line); background: var(--paper); border-radius: 999px;
+  padding: 3px 12px; font: 13.5px system-ui, sans-serif; cursor: pointer; color: var(--muted);
+}
+.chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* диалоги и таблицы форм */
+.dialog { background: #fbfbfc; border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 12px 0; }
+.dialog p { margin: 5px 0; }
+.dialog .who { font: 600 14px system-ui, sans-serif; color: var(--accent); margin-right: 6px; }
+table.gram { width: 100%; border-collapse: collapse; font: 15px system-ui, sans-serif; margin: 12px 0; }
+table.gram th, table.gram td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+table.gram th { background: var(--chip); font-weight: 600; font-size: 14px; }
+table.gram td.en { font-family: Georgia, serif; }
+.phrasebook { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin: 12px 0; }
+.phrasebook .ph { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+.phrasebook .ph .e { font: 16px Georgia, serif; }
+.phrasebook .ph .r { font: 13.5px system-ui, sans-serif; color: var(--muted); }
+
+@media (max-width: 560px) {
+  .plate-list { columns: 1; }
+  .drill .prompt { font-size: 17px; }
+  .vocab-bar input[type=search] { width: 100%; }
+}
