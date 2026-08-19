@@ -24,29 +24,32 @@ rudder: `<svg viewBox="0 0 120 90" role="img" aria-label="rudder">
   <path d="M32 14 H44 M32 78 H44"/></g></svg>`,
 
 hammer: `<svg viewBox="0 0 120 90" role="img" aria-label="hammer">
-  <g class="ln"><path d="M26 78 L66 38" stroke-width="5"/>
-  <path d="M60 20 h22 a4 4 0 0 1 4 4 v14 a4 4 0 0 1-4 4 H60z"/>
-  <path d="M60 20 l-14 8 v10 l14 8z"/></g></svg>`,
+  <g class="ln"><path d="M54 32 V80" stroke-width="5"/>
+  <path d="M32 18 h44 a4 4 0 0 1 4 4 v10 a4 4 0 0 1-4 4 H32z"/>
+  <path d="M32 18 q-16 4 -18 16 q8 6 18 2"/>
+  <path d="M46 36 h16 v8 h-16z"/></g></svg>`,
 
 spanner: `<svg viewBox="0 0 120 90" role="img" aria-label="spanner">
-  <g class="ln"><path d="M40 62 L80 24" stroke-width="6"/>
-  <path d="M34 78 a12 12 0 1 1-14-16 l8 8 -3 6 6 -3z"/>
-  <path d="M86 12 a12 12 0 1 1 14 16 l-8-8 3-6 -6 3z"/></g></svg>`,
+  <g class="ln"><path d="M34 39 h52 v12 H34z"/>
+  <path d="M34 31 H18 v9 h9 v10 h-9 v9 h16z"/>
+  <path d="M86 31 h16 v9 h-9 v10 h9 v9 H86z"/></g></svg>`,
 
 screwdriver: `<svg viewBox="0 0 120 90" role="img" aria-label="screwdriver">
-  <g class="ln"><rect x="16" y="34" width="34" height="22" rx="7"/>
-  <path d="M50 40 h16 v10 H50z"/><path d="M66 41 h26 v8 H66z"/>
-  <path d="M92 40 l12 5 -12 5z"/><path d="M24 34 v22 M32 34 v22 M40 34 v22"/></g></svg>`,
+  <g class="ln"><path d="M14 34 h30 a6 6 0 0 1 0 22 H14 a6 6 0 0 1 0-22z"/>
+  <path d="M20 34 v22 M28 34 v22 M36 34 v22"/>
+  <path d="M44 40 h18 v10 H44z"/><path d="M62 42 h32 v6 H62z"/>
+  <path d="M94 39 h10 v12 h-10z"/></g></svg>`,
 
 saw: `<svg viewBox="0 0 120 90" role="img" aria-label="saw">
-  <g class="ln"><path d="M18 26 h64 l14 12 -14 12 H18z" fill="none"/>
-  <path d="M18 50 l7 8 7-8 7 8 7-8 7 8 7-8 7 8 7-8 7 8 7-8"/>
-  <path d="M96 38 h8 a6 6 0 0 1 0 12 h-8"/></g></svg>`,
+  <g class="ln"><path d="M42 24 h64 l-10 22 H42z" fill="#fff"/>
+  <path d="M42 46 l6 8 6-8 6 8 6-8 6 8 6-8 6 8 6-8 6 8 6-8"/>
+  <path d="M42 18 h-10 a18 18 0 0 0-14 28 a12 12 0 0 0 14 8 h10z" fill="#fff"/>
+  <path d="M32 28 a11 11 0 0 0-7 16"/></g></svg>`,
 
 bolt: `<svg viewBox="0 0 120 90" role="img" aria-label="bolt">
-  <g class="ln"><path d="M24 30 l10-8 h20 l10 8 v30 l-10 8 H34 l-10-8z"/>
-  <path d="M64 34 h34 v22 H64z"/>
-  <path d="M70 34 v22 M78 34 v22 M86 34 v22 M94 34 v22"/></g></svg>`,
+  <g class="ln"><path d="M22 30 l10-8 h20 l10 8 v30 l-10 8 H32 l-10-8z"/>
+  <path d="M62 34 h38 v22 H62z"/>
+  <path d="M68 34 v22 M76 34 v22 M84 34 v22 M92 34 v22"/></g></svg>`,
 
 nut: `<svg viewBox="0 0 120 90" role="img" aria-label="nut">
   <g class="ln"><path d="M60 12 l30 17 v34 l-30 17 -30-17 V29z"/>
@@ -118,6 +121,71 @@ deck: `<svg viewBox="0 0 120 90" role="img" aria-label="deck">
   <g class="ln"><path d="M12 52 h96"/><path d="M12 52 l10 20 h76 l10-20"/>
   <path d="M24 52 V38 h16 v14 M56 52 V32 h20 v20"/>
   <path d="M12 60 h96" class="gray"/></g></svg>`,
+
+pliers: `<svg viewBox="0 0 120 90" role="img" aria-label="pliers">
+  <g class="ln"><path d="M22 22 L58 42 M22 68 L58 48"/>
+  <path d="M62 40 L102 28 M62 50 L102 62"/>
+  <circle cx="60" cy="45" r="5"/>
+  <path d="M22 22 a7 7 0 0 0-8 10 M22 68 a7 7 0 0 1-8-10"/></g></svg>`,
+
+file: `<svg viewBox="0 0 120 90" role="img" aria-label="file">
+  <g class="ln"><path d="M10 36 h26 v18 H10z"/>
+  <path d="M36 34 h58 l12 11 -12 11 H36z"/>
+  <path d="M46 34 l-6 22 M58 34 l-6 22 M70 34 l-6 22 M82 34 l-6 22 M94 34 l-6 22"/></g></svg>`,
+
+chisel: `<svg viewBox="0 0 120 90" role="img" aria-label="chisel">
+  <g class="ln"><path d="M12 30 h34 v30 H12z"/>
+  <path d="M20 30 v30 M28 30 v30 M36 30 v30"/>
+  <path d="M46 36 h30 v18 H46z"/>
+  <path d="M76 38 l26 7 -26 7z"/></g></svg>`,
+
+drill: `<svg viewBox="0 0 120 90" role="img" aria-label="drill">
+  <g class="ln"><path d="M22 26 h50 v24 H22z"/>
+  <path d="M72 30 h12 v16 H72z"/><path d="M84 34 h8 v8 h-8z"/>
+  <path d="M92 36 h16 M92 40 h16"/>
+  <path d="M30 50 h20 l-4 26 H26z"/>
+  <path d="M50 40 h8 v6 h-8z"/></g></svg>`,
+
+grinder: `<svg viewBox="0 0 120 90" role="img" aria-label="grinder">
+  <g class="ln"><path d="M10 34 h48 a8 8 0 0 1 0 22 H10z"/>
+  <path d="M20 34 v22 M30 34 v22"/>
+  <path d="M58 36 h16 v18 H58z"/>
+  <circle cx="90" cy="45" r="18"/>
+  <path d="M74 27 a22 22 0 0 1 32 0"/></g></svg>`,
+
+'vernier caliper': `<svg viewBox="0 0 120 90" role="img" aria-label="vernier caliper">
+  <g class="ln"><path d="M18 40 h88 v10 H18z" fill="#fff"/>
+  <path d="M18 40 v-20 h9 v20z" fill="#fff"/><path d="M18 50 v18 h9 v-18z" fill="#fff"/>
+  <path d="M56 34 h22 v22 H56z" fill="#fff"/>
+  <path d="M60 34 v-14 h8 v14z" fill="#fff"/><path d="M60 56 v14 h8 v-14z" fill="#fff"/>
+  <path d="M34 40 v4 M42 40 v4 M50 40 v4 M86 40 v4 M94 40 v4"/></g></svg>`,
+
+micrometer: `<svg viewBox="0 0 120 90" role="img" aria-label="micrometer">
+  <g class="ln"><path d="M40 22 a26 26 0 0 0 0 44"/>
+  <path d="M40 22 h8 v10 h-8z"/><path d="M40 56 h8 v10 h-8z"/>
+  <path d="M48 41 h10 v6 H48z"/>
+  <path d="M58 38 h14 v12 H58z"/>
+  <path d="M72 34 h30 v20 H72z"/>
+  <path d="M80 34 v20 M88 34 v20 M96 34 v20"/></g></svg>`,
+
+'tape measure': `<svg viewBox="0 0 120 90" role="img" aria-label="tape measure">
+  <g class="ln"><path d="M20 28 h46 a6 6 0 0 1 6 6 v22 a6 6 0 0 1-6 6 H20 a6 6 0 0 1-6-6 V34 a6 6 0 0 1 6-6z"/>
+  <circle cx="42" cy="45" r="13"/><circle cx="42" cy="45" r="4"/>
+  <path d="M72 40 h30 v10 H72z"/>
+  <path d="M80 40 v5 M88 40 v5 M96 40 v5"/>
+  <path d="M102 36 h6 v18 h-6z"/></g></svg>`,
+
+rivet: `<svg viewBox="0 0 120 90" role="img" aria-label="rivet">
+  <g class="ln"><path d="M38 34 a22 12 0 0 1 44 0z"/>
+  <path d="M52 34 h16 v34 H52z"/>
+  <path d="M46 68 h28"/>
+  <path d="M20 56 h32 M68 56 h32" class="gray"/></g></svg>`,
+
+screw: `<svg viewBox="0 0 120 90" role="img" aria-label="screw">
+  <g class="ln"><path d="M34 24 h22 v14 H34z"/>
+  <path d="M38 31 h14"/>
+  <path d="M40 38 h10 v28 l-5 10 -5-10z"/>
+  <path d="M40 44 h10 M40 51 h10 M40 58 h10"/></g></svg>`,
 
 anchorless: '',
 };

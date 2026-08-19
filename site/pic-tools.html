@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Инструменты и крепёж — Английский язык для кораблестроителей</title>
+<meta name="description" content="Английские названия инструментов и крепежа: hammer, spanner, screwdriver, pliers, file, chisel, drill, grinder, saw, vernier caliper, micrometer, tape measure, bolt, nut, rivet. Щелчок по подписи даёт произношение и перевод.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="pictures"></script>
+<main class="wrap">
+  <h1>Инструменты и крепёж<br><span style="font-weight:400;font-size:.62em">tools and fasteners</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Пятнадцать значков: ручной инструмент, измерительный инструмент
+      и крепёж.</li>
+      <li>Щелчок по подписи — произношение, транскрипция, перевод и пример.</li>
+      <li>Британские и американские названия различаются чаще всего именно
+      здесь: <i>spanner</i> — <i>wrench</i>, <i>tape measure</i> —
+      <i>measuring tape</i>.</li>
+    </ul>
+  </div>
+
+  <p class="lead">Инструмент — та лексика, которую инженер слышит на верфи чаще
+  всего и почти никогда не встречает в учебнике. Названия короткие, но легко
+  путаются: <i>file</i> — это и напильник, и файл; <i>screw</i> — винт,
+  а <i>screwdriver</i> — отвёртка; <i>drill</i> — и дрель, и сверло,
+  и глагол «сверлить».</p>
+
+  <div class="panel">
+    <svg id="plate" class="geo-board" viewBox="0 0 640 470" style="max-width:640px" role="img"
+         aria-label="Значки инструментов и крепежа с английскими и русскими подписями"></svg>
+    <div class="caption">Сетка значков: ручной инструмент (верхний ряд),
+    режущий и измерительный (средний), крепёж (нижний). Щёлкните по любой
+    подписи.</div>
+  </div>
+
+  <h2>Как это звучит в работе</h2>
+  <div class="en">Take the hammer and the chisel and remove the old weld.
+  Tighten the nut with a spanner, but do not overtighten it. Measure the
+  thickness of the plate with a vernier caliper, and check the shaft with a
+  micrometer. Drill a hole of ten millimetres and clean the edge with a file.
+  Old hulls were joined by rivets; today we use bolts and welded seams.</div>
+
+  <h2>Слова схемы</h2>
+  <div class="wordbox" data-page="pic-tools"></div>
+
+  <div class="note tip">Проверить себя: <a href="d-match">слово и картинка</a>
+  (те же значки), <a href="d-dictation">диктант на слух</a>,
+  <a href="d-cards">карточки</a>.</div>
+
+  <div class="chapnav">
+    <span><a href="pic-bridge">← мостик и навигация</a></span>
+    <span><a href="pictures">все иллюстрации →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/pics.js"></script>
+<script>
+/* Сетка значков собирается из общего набора PICS — того же, что в тренажёре
+ * «слово и картинка», поэтому значок и слово всегда совпадают. */
+(function () {
+  var order = [
+    ['hammer', 'молоток'], ['spanner', 'гаечный ключ'], ['screwdriver', 'отвёртка'],
+    ['pliers', 'плоскогубцы'], ['saw', 'пила'],
+    ['file', 'напильник'], ['chisel', 'зубило'], ['drill', 'дрель, сверло'],
+    ['grinder', 'шлифмашина'], ['vernier caliper', 'штангенциркуль'],
+    ['micrometer', 'микрометр'], ['tape measure', 'рулетка'], ['bolt', 'болт'],
+    ['nut', 'гайка'], ['rivet', 'заклёпка'],
+  ];
+  var svg = document.getElementById('plate');
+  var COLS = 5, CW = 128, CH = 150, PAD = 6;
+  var out = [];
+  order.forEach(function (pair, i) {
+    var key = pair[0], ru = pair[1];
+    var col = i % COLS, row = Math.floor(i / COLS);
+    var x = col * CW, y = row * CH + 10;
+    var inner = (PICS[key] || '').replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+    var k = 0.85;                       /* значок 120 × 90 → 102 × 76 */
+    var ix = x + (CW - 120 * k) / 2, iy = y + 4;
+    out.push('<g transform="translate(' + ix.toFixed(1) + ',' + iy + ') scale(' + k + ')">'
+      + inner + '</g>');
+    out.push('<g class="wlbl" data-word="' + key + '">'
+      + '<text class="en-lbl" x="' + (x + CW / 2) + '" y="' + (y + 100)
+      + '" text-anchor="middle">' + key + '</text>'
+      + '<text class="ru-lbl" x="' + (x + CW / 2) + '" y="' + (y + 114)
+      + '" text-anchor="middle">' + ru + '</text></g>');
+    if (col === 0 && row > 0) {
+      out.push('<path class="ln-link" d="M14 ' + (y - 12) + ' H626"/>');
+    }
+  });
+  svg.innerHTML = out.join('');
+  svg.setAttribute('viewBox', '0 0 640 ' + (Math.ceil(order.length / COLS) * CH + 14 + PAD));
+})();
+</script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+</body>
+</html>
