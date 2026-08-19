@@ -33,7 +33,10 @@ and or but if because when where why how who what which very also too
 
 def main():
     base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    src = io.open(os.path.join(base, 'site', 'assets', 'vocab.js'), encoding='utf-8').read()
+    import glob
+    files = sorted(glob.glob(os.path.join(base, 'site', 'assets', 'vocab*.js')))
+    src = '\n'.join(io.open(f, encoding='utf-8').read() for f in files)
+    print('файлы словаря:', ', '.join(os.path.basename(f) for f in files))
     entries = re.findall(r"\{[^{}]*?\bw:\s*'([^']+)'[^{}]*?\}", src, re.S)
     blocks = re.findall(r"\{[^{}]*?\bw:\s*'[^']+'[^{}]*?\}", src, re.S)
     have = {w.lower() for w in entries}
