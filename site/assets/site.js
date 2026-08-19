@@ -13,6 +13,18 @@
   const nav = [
     { h: '', k: 'index', t: 'Обзор' },
     { h: 'level', k: 'level', t: 'Проверка уровня' },
+    { t: 'С нуля', h: 'zero', drop: [
+      { h: 'zero', k: 'zero', t: 'С чего начать' },
+      { h: 'z-alphabet', k: 'zero', t: 'Алфавит и звуки букв' },
+      { h: 'z-reading', k: 'zero', t: 'Правила чтения' },
+      { h: 'z-ipa', k: 'zero', t: 'Транскрипция' },
+      { h: 'z-g1', k: 'zero', t: 'Местоимения и глагол be' },
+      { h: 'z-g2', k: 'zero', t: 'Существительные, артикли, there is' },
+      { h: 'z-g3', k: 'zero', t: 'Порядок слов и Present Simple' },
+      { h: 'z-g4', k: 'zero', t: 'Числа, время, предлоги' },
+      { h: 'z-g5', k: 'zero', t: 'can, must и прошедшее время' },
+      { h: 'z-words', k: 'zero', t: 'Первая тысяча слов' },
+    ] },
     { t: 'Юниты', h: 'units', drop: [
       { h: 'units', k: 'units', t: 'Программа курса' },
       { h: 'u1', k: 'units', t: '1. First things first' },

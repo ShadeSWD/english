@@ -230,7 +230,8 @@
     var crit = criteria();
     el.innerHTML = P.routes.map(function (r) {
       var v = routeValues(r);
-      return '<div class="task"><h3 style="margin-top:0">' + esc(r.id) + '</h3>'
+      var name = r.page ? '<a href="' + esc(r.page) + '">' + esc(r.id) + '</a>' : esc(r.id);
+      return '<div class="task"><h3 style="margin-top:0">' + name + '</h3>'
         + '<p style="margin:4px 0">' + esc(r.why) + '</p>'
         + '<p class="small" style="margin:0">Оценки: '
         + crit.map(function (c, i) {
@@ -470,7 +471,10 @@
           h += '.';
         }
         h += '</p>';
-        if (rt) h += '<p class="small">' + esc(rt.why) + '</p>';
+        if (rt) {
+          h += '<p class="small">' + esc(rt.why)
+            + (rt.page ? ' <a href="' + esc(rt.page) + '">открыть раздел →</a>' : '') + '</p>';
+        }
         var verdict = '';
         if (live && r.status) {
           verdict = (r.status === 'accepted' || r.accepted)
