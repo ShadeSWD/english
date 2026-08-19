@@ -186,7 +186,15 @@
   <h2>Слова юнита</h2>
   <div class="wordbox" data-page="u6"></div>
 
-  <h2>Проверка</h2>
+  <h2>Задания юнита</h2>
+  <p>Интерактивные аналоги всех упражнений этого раздела пособия: та же
+  грамматика и та же лексика, но свои предложения. Номер у каждой карточки —
+  номер упражнения в книге. Задания показываются блоками: закончив блок,
+  переходите к следующему; проверенное запоминается и не теряется после
+  перезагрузки страницы.</p>
+  <div id="tasks"></div>
+
+  <h2>Быстрая проверка</h2>
   <p>Десять заданий по грамматике юнита. Правильный ответ и объяснение
   показываются сразу, результат сохраняется.</p>
   <div id="drill"></div>
@@ -201,6 +209,11 @@
 <script src="assets/speak.js"></script>
 <script src="assets/lists.js"></script>
 <script src="assets/drill.js"></script>
+<script src="assets/tasks-u6.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'u6', size: 6 });
+</script>
 <script>
 DRILL.grammar(document.getElementById('drill'), [
   { topic: 'страдательный залог, Past', q: 'The city ___ founded in 1703.', a: 'was',
