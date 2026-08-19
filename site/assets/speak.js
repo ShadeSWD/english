@@ -92,7 +92,10 @@
     });
   }
 
-  /* Простая нормализация словоформы: множественное число, -ed, -ing. */
+  /* Простая нормализация словоформы: множественное число, -ed, -ing.
+     Запасной вариант: если на странице нет endict.js, разбираем формы сами.
+     Обычный путь — EnDict.lookupSync: там та же таблица форм, что и в общем
+     словаре, поэтому «is» не превращается в «I», а «does» — в самку оленя. */
   function lookup(word) {
     const w = String(word || '').toLowerCase().replace(/[’']s$/, '');
     if (dict.has(w)) return dict.get(w);
@@ -114,9 +117,43 @@
   let card = null;
   function closeCard() { if (card) { card.remove(); card = null; } }
 
+  /* Ответ общего словаря кластера: он мог найтись сразу (шард уже в памяти)
+     или подгружается по сети — оформление в обоих случаях одно. */
+  function fillGeneral(target, g, word) {
+    const put = (found) => {
+      if (target !== card) return;                   // карточку уже закрыли
+      const slot = target.querySelector('.nodict');
+      if (!slot) return;
+      if (!found) {
+        slot.textContent = 'Слова нет ни в словаре курса, ни в общем словаре — произношение всё равно доступно.';
+        return;
+      }
+      slot.className = 'ru';
+      slot.textContent = found.ru;
+      if (found.ipa && !target.querySelector('.ipa')) {
+        target.querySelector('.hw').insertAdjacentHTML('afterend',
+          `<span class="ipa">[${esc(found.ipa)}]</span>`);
+      }
+      if (found.pos && !target.querySelector('.pos')) {
+        (target.querySelector('.ipa') || target.querySelector('.hw'))
+          .insertAdjacentHTML('afterend', `<span class="pos">${esc(found.pos)}</span>`);
+      }
+      slot.insertAdjacentHTML('beforebegin',
+        `<div class="ex" style="color:#6b6b74">${esc(found.note || 'общий словарь кластера')}</div>`);
+    };
+    if (g) put(g);
+    else if (window.EnDict) window.EnDict.lookup(word).then(put);
+    else put(null);
+  }
+
   function showCard(el, word) {
     closeCard();
-    const e = lookup(word);
+    /* Сначала словарь курса: там значение из наших текстов, пример и тема.
+       Сразу показываем только точное попадание — разбор окончания без общего
+       словаря может ошибиться, поэтому за ним идём асинхронно. */
+    const hit = window.EnDict ? window.EnDict.lookupSync(word) : null;
+    const e = (hit && hit.src === 'course' && hit.exact) ? hit : (window.EnDict ? null : lookup(word));
+    const ready = null;
     card = document.createElement('div');
     card.className = 'wordcard';
     const head = `<span class="x" title="закрыть">&times;</span><span class="hw">${esc(e ? e.w : word)}</span>`
@@ -124,7 +161,8 @@
       + (e && e.pos ? `<span class="pos">${esc(e.pos)}</span>` : '');
     let body;
     if (e) {
-      body = `<div class="ru">${esc(e.ru)}</div>`
+      body = (e.note ? `<div class="ex" style="color:#6b6b74">${esc(e.note)}</div>` : '')
+        + `<div class="ru">${esc(e.ru)}</div>`
         + (e.ex ? `<div class="ex">${esc(e.ex)}<i>${esc(e.exru || '')}</i></div>` : '');
     } else {
       /* Слова нет в словаре курса — спрашиваем общий словарь кластера
@@ -135,30 +173,7 @@
       ? `<a class="btn" href="vocab?q=${encodeURIComponent(e.w)}">в словаре</a>` : '';
     card.innerHTML = head + body
       + `<div class="row2"><button class="btn speak-again" type="button">🔊 повторить</button>${links}</div>`;
-    if (!e && window.EnDict) {
-      const target = card;
-      window.EnDict.lookup(word).then((g) => {
-        if (target !== card) return;                 // карточку уже закрыли
-        const slot = target.querySelector('.nodict');
-        if (!slot) return;
-        if (!g) {
-          slot.textContent = 'Слова нет ни в словаре курса, ни в общем словаре — произношение всё равно доступно.';
-          return;
-        }
-        slot.className = 'ru';
-        slot.textContent = g.ru;
-        if (g.ipa && !target.querySelector('.ipa')) {
-          target.querySelector('.hw').insertAdjacentHTML('afterend',
-            `<span class="ipa">[${esc(g.ipa)}]</span>`);
-        }
-        if (g.pos && !target.querySelector('.pos')) {
-          (target.querySelector('.ipa') || target.querySelector('.hw'))
-            .insertAdjacentHTML('afterend', `<span class="pos">${esc(g.pos)}</span>`);
-        }
-        slot.insertAdjacentHTML('afterend',
-          '<div class="ex" style="color:#6b6b74">общий словарь кластера</div>');
-      });
-    }
+    if (!e) fillGeneral(card, ready, word);
     document.body.appendChild(card);
     const r = el.getBoundingClientRect();
     const top = r.bottom + window.scrollY + 6;
