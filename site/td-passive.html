@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passive and impersonal — Английский язык для кораблестроителей</title>
+<meta name="description" content="Страдательный залог и безличные конструкции в технической документации: пассив во всех нужных временах, пассив с модальными глаголами, обороты it is said that, it should be noted that, there is/are, перевод русских неопределённо-личных предложений.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="tech"></script>
+<main class="wrap">
+  <h1>Страдательный залог и безличные конструкции<br><span style="font-weight:400;font-size:.62em">the passive voice and impersonal constructions</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li><b>О чём страница:</b> как устроен пассив в правилах, спецификациях и
+      отчётах: формы по временам, пассив с модальными глаголами, пассив от
+      глаголов с двумя дополнениями.</li>
+      <li><b>Главное в языке:</b> формула <i>be + третья форма</i>, исполнитель
+      после <i>by</i>, средство после <i>with</i>, безличные обороты
+      <i>it is said that</i>, <i>it should be noted that</i>,
+      <i>it is necessary to</i> и описательное <i>there is / there are</i>.</li>
+      <li><b>Слова:</b> requirement, compliance, in accordance with, unless
+      otherwise specified, deviation, approval, survey, record.</li>
+      <li><b>В конце:</b> сводная таблица форм, разбор типичных ошибок, слова
+      темы и пять заданий с автопроверкой.</li>
+    </ul>
+  </div>
+
+  <p class="lead">Русский технический текст любит неопределённо-личное
+  предложение: «швы проверяют», «отчёт направили заказчику». В английском такого
+  предложения без подлежащего не бывает, и его место занимает страдательный
+  залог. Поэтому в Правилах классификационного общества сказуемых в пассиве
+  больше, чем в активе: важно действие и его результат, а исполнитель либо
+  очевиден, либо назван в конце после <i>by</i>.</p>
+
+  <h2>1. Формула и времена</h2>
+
+  <p>Пассив собирается из глагола <i>be</i> в нужном времени и третьей формы
+  смыслового глагола. Меняется только <i>be</i>; третья форма остаётся
+  неизменной. Четырёх времён хватает почти на весь объём документации.</p>
+
+  <table class="gram">
+    <thead><tr><th>Время</th><th>Пример</th><th>Когда употребляется</th></tr></thead>
+    <tbody>
+      <tr><td>present simple</td><td class="en nobar">Every weld is inspected before painting.</td><td>постоянное правило, описание технологии</td></tr>
+      <tr><td>present simple, мн. ч.</td><td class="en nobar">The plates are cut by a numerically controlled machine.</td><td>то же, подлежащее во множественном числе</td></tr>
+      <tr><td>past simple</td><td class="en nobar">The section was welded in the workshop.</td><td>законченное действие в прошлом</td></tr>
+      <tr><td>future simple</td><td class="en nobar">The vessel will be delivered in March.</td><td>обязательство на будущее</td></tr>
+      <tr><td>present perfect</td><td class="en nobar">The report has been sent to the surveyor.</td><td>результат, важный сейчас</td></tr>
+      <tr><td>present continuous</td><td class="en nobar">The tank is being tested at the moment.</td><td>идёт прямо сейчас; в отчётах редко</td></tr>
+      <tr><td>с модальным глаголом</td><td class="en nobar">The load must be carried into the next member.</td><td>требование, запрет, разрешение</td></tr>
+      <tr><td>инфинитив пассива</td><td class="en nobar">The valve is to be opened by hand.</td><td>предписание чертежа и инструкции</td></tr>
+    </tbody>
+  </table>
+
+  <p>Исполнитель вводится предлогом <i>by</i>, а инструмент или средство —
+  предлогом <i>with</i>: <i class="en nobar">the seam was checked by the
+  inspector</i>, но <i class="en nobar">the seam was checked with an ultrasonic
+  probe</i>. В девяти случаях из десяти исполнителя вообще не называют:
+  <i class="en nobar">the edges are bevelled before welding</i> — кто снимает
+  фаску, читателю правил не важно.</p>
+
+  <h2>2. Пассив от глаголов с двумя дополнениями</h2>
+
+  <p>Глаголы <i>give, send, show, offer, tell, pay, award</i> имеют два
+  дополнения — лицо и предмет. Поэтому у активного предложения есть два
+  страдательных варианта, и в документации чаще берут первый: он начинается
+  с человека или организации, о которой идёт речь.</p>
+
+  <table class="dt">
+    <thead><tr><th>Актив</th><th>Пассив 1 (лицо)</th><th>Пассив 2 (предмет)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="en nobar">The yard gave the owner a copy of the report.</td>
+        <td class="en nobar">The owner was given a copy of the report.</td>
+        <td class="en nobar">A copy of the report was given to the owner.</td>
+      </tr>
+      <tr>
+        <td class="en nobar">The Society sent the yard the new Rules.</td>
+        <td class="en nobar">The yard was sent the new Rules.</td>
+        <td class="en nobar">The new Rules were sent to the yard.</td>
+      </tr>
+      <tr>
+        <td class="en nobar">They showed the surveyor the test records.</td>
+        <td class="en nobar">The surveyor was shown the test records.</td>
+        <td class="en nobar">The test records were shown to the surveyor.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Во втором варианте перед лицом обязателен предлог <i>to</i>, а у глагола
+  <i>buy</i> — предлог <i>for</i>. Русское «нам сообщили», «заказчику выдали
+  сертификат» переводится именно первым вариантом:
+  <i class="en nobar">we were informed</i>,
+  <i class="en nobar">the owner was issued a certificate</i>.</p>
+
+  <h2>3. Безличные обороты</h2>
+
+  <p>Второй способ обойтись без деятеля — начать предложение с формального
+  <i>it</i>. Такие обороты открывают пункт правил, вывод отчёта или примечание
+  к чертежу.</p>
+
+  <table class="gram">
+    <thead><tr><th>Оборот</th><th>Перевод</th><th>Что заметить</th></tr></thead>
+    <tbody>
+      <tr><td class="en nobar">It is said that the alloy resists pitting.</td><td>говорят, что сплав стоек к питтингу</td><td>источник сведений не назван</td></tr>
+      <tr><td class="en nobar">It is known that fatigue starts at a sharp corner.</td><td>известно, что усталость начинается у острого угла</td><td>общепризнанный факт</td></tr>
+      <tr><td class="en nobar">It is stated in the specification that the steel is grade A.</td><td>в спецификации указано, что сталь марки A</td><td>ссылка на документ</td></tr>
+      <tr><td class="en nobar">It should be noted that the tolerance is a limit, not a target.</td><td>следует отметить, что допуск — предел, а не цель</td><td>вежливое «обратите внимание»</td></tr>
+      <tr><td class="en nobar">It is necessary to check the gap before tacking.</td><td>необходимо проверить зазор до прихватки</td><td>после <i>necessary</i> идёт инфинитив с <i>to</i></td></tr>
+      <tr><td class="en nobar">It is recommended that the tank be tested hydraulically.</td><td>рекомендуется испытать танк гидравлически</td><td>после <i>recommend</i> — <i>be</i> без окончания</td></tr>
+      <tr><td class="en nobar">It was found that the coating had failed at the weld.</td><td>было установлено, что покрытие разрушилось у шва</td><td>вывод обследования</td></tr>
+    </tbody>
+  </table>
+
+  <p>Родственная конструкция — «сложное подлежащее»: то же значение, но короче.
+  <i class="en nobar">The material is said to be free from laminations</i> =
+  <i class="en nobar">it is said that the material is free from laminations</i>.
+  Так же ведут себя <i>is known to</i>, <i>is believed to</i>,
+  <i>is considered to</i>, <i>is reported to</i>.</p>
+
+  <p>Наконец, описание помещения, узла или чертежа строится оборотом
+  <i>there is / there are</i>: он вводит то, о чём читатель ещё не знает.
+  <i class="en nobar">There is a manhole in the after bulkhead.</i>
+  <i class="en nobar">There are two longitudinal girders under the deck.</i>
+  <i class="en nobar">There were no cracks in the test piece.</i> По-русски всем
+  трём предложениям соответствует «есть», «имеется», «нет».</p>
+
+  <h2>4. Русское неопределённо-личное предложение</h2>
+
+  <p>Проверьте себя на самом частом переходе. Русское предложение без
+  подлежащего («проверяют», «сообщили», «отправят») почти всегда становится
+  английским пассивом, а русский творительный падеж — оборотом с <i>by</i> или
+  <i>with</i>.</p>
+
+  <table class="dt">
+    <thead><tr><th>По-русски</th><th>По-английски</th></tr></thead>
+    <tbody>
+      <tr><td>Швы проверяют ультразвуком.</td><td class="en nobar">The welds are checked with an ultrasonic probe.</td></tr>
+      <tr><td>Об этом сообщили заказчику.</td><td class="en nobar">The owner has been informed of this.</td></tr>
+      <tr><td>Размеры дают в миллиметрах.</td><td class="en nobar">Dimensions are given in millimetres.</td></tr>
+      <tr><td>Секцию перевернули и заварили с обратной стороны.</td><td class="en nobar">The section was turned over and welded from the other side.</td></tr>
+      <tr><td>Чертёж согласуют с классификационным обществом.</td><td class="en nobar">The drawing is agreed with the classification society.</td></tr>
+      <tr><td>Отступление оформят как разрешение на отклонение.</td><td class="en nobar">The deviation will be covered by a waiver.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Когда пассив не нужен</h2>
+
+  <p>Пассив — инструмент, а не украшение. Он лишний в трёх случаях. Первый:
+  исполнитель важен и назван. Правильнее <i class="en nobar">the surveyor signed
+  the report</i>, чем <i>the report was signed by the surveyor</i>, если речь
+  именно о сюрвейере. Второй: глагол не имеет пассива. Это все непереходные
+  глаголы — <i>consist of, occur, appear, arise, differ, remain, happen</i>:
+  <i class="en nobar">the hull consists of six blocks</i>, но не
+  «is consisted». Третий: три пассива подряд делают фразу нечитаемой; в отчёте
+  такой абзац лучше разбить и часть сказуемых вернуть в актив.</p>
+
+  <p>Отдельно запомните глаголы с предлогом. В пассиве предлог остаётся при
+  глаголе и никуда не уходит: <i class="en nobar">the results were agreed
+  upon</i>, <i class="en nobar">the pump has been sent for</i>,
+  <i class="en nobar">the crack was dealt with immediately</i>.</p>
+
+  <h2>Сводная таблица</h2>
+  <table class="gram">
+    <thead><tr><th>Конструкция</th><th>Схема</th><th>Пример</th></tr></thead>
+    <tbody>
+      <tr><td>простой пассив</td><td>be + V3</td><td class="en nobar">the plate is bevelled</td></tr>
+      <tr><td>пассив с модальным</td><td>modal + be + V3</td><td class="en nobar">the gap must be measured</td></tr>
+      <tr><td>предписание</td><td>is to be + V3</td><td class="en nobar">the valve is to be closed</td></tr>
+      <tr><td>перфект</td><td>have been + V3</td><td class="en nobar">the tests have been completed</td></tr>
+      <tr><td>два дополнения</td><td>лицо + be + V3</td><td class="en nobar">the owner was given a copy</td></tr>
+      <tr><td>безличный оборот</td><td>it is + V3 + that</td><td class="en nobar">it is stated that…</td></tr>
+      <tr><td>сложное подлежащее</td><td>be + V3 + to&nbsp;+&nbsp;inf</td><td class="en nobar">the steel is known to be tough</td></tr>
+      <tr><td>наличие предмета</td><td>there is / there are</td><td class="en nobar">there are two openings</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Типичные ошибки</h2>
+  <table class="dt">
+    <thead><tr><th>Неверно</th><th>Верно</th><th>Почему</th></tr></thead>
+    <tbody>
+      <tr><td class="en nobar">the plate was cutted</td><td class="en nobar">the plate was cut</td><td>у <i>cut</i> все три формы совпадают</td></tr>
+      <tr><td class="en nobar">the hull is consisted of blocks</td><td class="en nobar">the hull consists of blocks</td><td>непереходный глагол пассива не имеет</td></tr>
+      <tr><td class="en nobar">it is a crack in the plate</td><td class="en nobar">there is a crack in the plate</td><td>наличие предмета вводит <i>there</i></td></tr>
+      <tr><td class="en nobar">it is necessary checking the gap</td><td class="en nobar">it is necessary to check the gap</td><td>после <i>necessary</i> — инфинитив</td></tr>
+      <tr><td class="en nobar">the results were agreed</td><td class="en nobar">the results were agreed upon</td><td>предлог глагола сохраняется</td></tr>
+      <tr><td class="en nobar">the report was sent by e-mail by the yard yesterday and…</td><td class="en nobar">the yard sent the report by e-mail</td><td>два <i>by</i> подряд — верните актив</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Слова темы</h2>
+  <div class="wordbox" data-page="td-passive"></div>
+
+  <h2>Тренажёр</h2>
+  <p>Пять заданий: формы пассива, безличные обороты, глаголы с двумя
+  дополнениями и перевод неопределённо-личных предложений. Проверенное
+  сохраняется в браузере.</p>
+  <div id="tasks"></div>
+
+  <div class="chapnav">
+    <span><a href="tx-qa">← quality and inspection</a></span>
+    <span><a href="td-modal">shall, must, is to be →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="lib/endict.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/tasks-doc.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'td-passive', size: 4 });
+</script>
+</body>
+</html>

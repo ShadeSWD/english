@@ -1,0 +1,478 @@
+/* Задания к подразделу «Язык документации» верхней ступени.
+ *
+ * unit: 'td-passive' — страдательный залог и безличные конструкции;
+ * unit: 'td-modal'   — модальные глаголы требований: shall, must, is to be;
+ * unit: 'td-cond'    — условные предложения;
+ * unit: 'td-part'    — причастные обороты;
+ * unit: 'td-num'     — числа, размеры, допуски и единицы вслух.
+ *
+ * Схема записи и типы описаны в assets/exercises.js.
+ */
+'use strict';
+(window.TASKS = window.TASKS || []).push(
+
+/* ================= страдательный залог и безличные обороты ================= */
+{
+  id: 'dp-1', unit: 'td-passive', src: 'пассив 1', topic: 'формы пассива', type: 'fill',
+  q: 'Раскройте скобки: везде нужен страдательный залог в подсказанном времени.',
+  items: [
+    { s: 'Every weld ___ (inspect) before painting.', a: [['is inspected']],
+      ru: 'каждый шов проверяют перед окраской' },
+    { s: 'The section ___ (weld) in the workshop last week.', a: [['was welded']],
+      ru: 'секцию сварили в цехе на прошлой неделе' },
+    { s: 'The drawings ___ (approve) by the Society, so cutting can start.',
+      a: [['have been approved']], ru: 'чертежи уже согласованы' },
+    { s: 'The vessel ___ (deliver) in March.', a: [['will be delivered']],
+      ru: 'судно сдадут в марте' },
+    { s: 'The load ___ (must, carry) into the next member.',
+      a: [['must be carried']], ru: 'нагрузку нужно передать на следующую связь' },
+    { s: 'The valve ___ (be to, open) by hand.', a: [['is to be opened']],
+      ru: 'клапан должен открываться вручную' },
+  ],
+  why: 'Меняется только глагол <b>be</b>: <i>is / was / will be / has been</i>. Третья форма при этом остаётся неизменной. После модального глагола и после оборота <i>is to</i> ставится <b>be</b> без окончаний: <i>must be carried</i>, <i>is to be opened</i>.',
+},
+{
+  id: 'dp-2', unit: 'td-passive', src: 'пассив 2', topic: 'безличные обороты', type: 'choice',
+  q: 'Выберите начало предложения.',
+  items: [
+    { s: '___ that the alloy resists pitting.',
+      opts: [
+        { t: 'It is said', ok: true, why: 'формальное <i>it</i> плюс пассив — стандартный способ сослаться на общее мнение.' },
+        { t: 'There is said', why: '<i>there</i> вводит наличие предмета, а не мнение.' },
+        { t: 'It says', why: 'актив здесь означал бы, что кто-то конкретный говорит; источник не назван.' },
+      ] },
+    { s: '___ a manhole in the after bulkhead.',
+      opts: [
+        { t: 'There is', ok: true, why: 'наличие предмета в описании вводится оборотом <i>there is</i>.' },
+        { t: 'It is', why: 'калька с русского «есть горловина»; <i>it</i> так не употребляется.' },
+        { t: 'There has', why: 'после <i>there</i> нужен глагол <i>be</i>, а не <i>have</i>.' },
+      ] },
+    { s: '___ to check the gap before tacking.',
+      opts: [
+        { t: 'It is necessary', ok: true, why: 'после <i>necessary</i> идёт инфинитив с <i>to</i>.' },
+        { t: 'It is necessary that', why: 'союз <i>that</i> требует после себя целого предложения, а не инфинитива.' },
+        { t: 'There is necessary', why: 'оборот <i>there is</i> вводит существительное, а не прилагательное.' },
+      ] },
+    { s: '___ that the tolerance is a limit, not a target.',
+      opts: [
+        { t: 'It should be noted', ok: true, why: 'вежливая формула примечания в отчёте и в правилах.' },
+        { t: 'It should note', why: 'нужен пассив: отмечает читатель, а не подлежащее <i>it</i>.' },
+        { t: 'There should be noted', why: '<i>there</i> в такой формуле не употребляется.' },
+      ] },
+  ],
+  why: 'Безличные обороты начинаются с формального <b>it</b>: <i>it is said</i>, <i>it is known</i>, <i>it should be noted</i>, <i>it is necessary to</i>. Оборот <b>there is / there are</b> служит для другого — он сообщает о наличии предмета.',
+},
+{
+  id: 'dp-3', unit: 'td-passive', src: 'пассив 3', topic: 'пассив с двумя дополнениями', type: 'build',
+  q: 'Соберите предложения. В каждом пассив начинается с лица или организации.',
+  items: [
+    { ru: 'Заказчику выдали копию отчёта.',
+      a: 'The owner was given a copy of the report.', extra: ['to'] },
+    { ru: 'Верфи направили новые Правила.',
+      a: 'The yard was sent the new Rules.', extra: ['were'] },
+    { ru: 'Сюрвейеру показали протоколы испытаний.',
+      a: 'The surveyor was shown the test records.', extra: ['were'] },
+  ],
+  why: 'У глаголов <i>give, send, show</i> два дополнения, поэтому пассива тоже два. Вариант с лицом на первом месте предлога не требует: <i>the owner was given a copy</i>. Предлог <b>to</b> нужен только во втором варианте: <i>a copy was given to the owner</i>.',
+},
+{
+  id: 'dp-4', unit: 'td-passive', src: 'пассив 4', topic: 'переходность глагола', type: 'sort',
+  q: 'Разложите глаголы: какие можно поставить в страдательный залог, а какие нет.',
+  cats: { y: 'пассив возможен', n: 'пассива не бывает' },
+  items: [
+    { t: 'to inspect the weld', c: 'y' },
+    { t: 'to approve the drawing', c: 'y' },
+    { t: 'to deliver the vessel', c: 'y' },
+    { t: 'to measure the gap', c: 'y' },
+    { t: 'to consist of six blocks', c: 'n' },
+    { t: 'to occur at a sharp corner', c: 'n' },
+    { t: 'to appear on the surface', c: 'n' },
+    { t: 'to remain in service', c: 'n' },
+  ],
+  why: 'Пассив бывает только у переходных глаголов, то есть у тех, при которых есть прямое дополнение. Глаголы <i>consist of, occur, appear, remain</i> непереходные, поэтому «is consisted», «was occurred» — ошибка.',
+},
+{
+  id: 'dp-5', unit: 'td-passive', src: 'пассив 5', topic: 'неопределённо-личные предложения', type: 'match',
+  q: 'Подберите русский эквивалент английскому предложению.',
+  pairs: [
+    ['The welds are checked with a probe.', 'Швы проверяют щупом прибора.'],
+    ['The owner has been informed.', 'Заказчику сообщили.'],
+    ['Dimensions are given in millimetres.', 'Размеры дают в миллиметрах.'],
+    ['The section was turned over.', 'Секцию перевернули.'],
+    ['The drawing is agreed with the Society.', 'Чертёж согласуют с Обществом.'],
+  ],
+  why: 'Русское предложение без подлежащего почти всегда становится английским пассивом. Творительный падеж средства передаётся предлогом <b>with</b>, а исполнитель — предлогом <b>by</b>.',
+},
+
+/* ================= модальные глаголы требований ================= */
+{
+  id: 'dm-1', unit: 'td-modal', src: 'модальные 1', topic: 'выбор модального глагола', type: 'choice',
+  q: 'Выберите глагол по смыслу пункта.',
+  items: [
+    { s: 'Each lifeboat ___ be provided with a painter.',
+      opts: [
+        { t: 'shall', ok: true, why: 'обязательное требование правил, отступить нельзя.' },
+        { t: 'should', why: 'это была бы рекомендация, а спасательная шлюпка без фалиня не принимается.' },
+        { t: 'may', why: '<i>may</i> даёт разрешение, а не предписание.' },
+      ] },
+    { s: 'The Society ___ accept an equivalent arrangement.',
+      opts: [
+        { t: 'may', ok: true, why: 'разрешение: Общество вправе, но не обязано принять другое решение.' },
+        { t: 'must', why: 'обязанности принимать альтернативу у Общества нет.' },
+        { t: 'shall not', why: 'запрет противоречит смыслу пункта об эквивалентной замене.' },
+      ] },
+    { s: 'The test ___ be repeated if the previous record is available.',
+      opts: [
+        { t: 'need not', ok: true, why: 'отсутствие необходимости: повторять можно, но не требуется.' },
+        { t: 'must not', why: 'это был бы запрет повторного испытания, а его никто не запрещает.' },
+        { t: 'shall not', why: 'то же самое: нормативный запрет здесь не имеется в виду.' },
+      ] },
+    { s: 'The edges ___ be ground smooth before painting.',
+      opts: [
+        { t: 'should', ok: true, why: 'рекомендация хорошей практики, а не жёсткое требование.' },
+        { t: 'shall not', why: 'зачищать кромки никто не запрещает.' },
+        { t: 'need not', why: 'смысл обратный: зачистку как раз советуют выполнить.' },
+      ] },
+  ],
+  why: 'Директивы ISO закрепили значения жёстко: <b>shall</b> — требование, <b>should</b> — рекомендация, <b>may</b> — разрешение, <b>can</b> — возможность. Отрицания различаются так же: <b>must not</b> — запрет, <b>need not</b> — можно не делать.',
+},
+{
+  id: 'dm-2', unit: 'td-modal', src: 'модальные 2', topic: 'is to be и отрицания', type: 'fill',
+  q: 'Заполните пропуски словами из списка: <i>are to be, is not to be, must not, may, need not, is required to</i>.',
+  items: [
+    { s: 'The scantlings ___ in accordance with the Rules.', a: [['are to be']],
+      ru: 'размеры связей должны отвечать Правилам' },
+    { s: 'The thickness ___ less than 8 mm.', a: [['is not to be']],
+      ru: 'толщина не должна быть менее 8 мм' },
+    { s: 'Hot work ___ be carried out without a permit.', a: [['must not']],
+      ru: 'огневые работы запрещены без наряда' },
+    { s: 'The Society ___ accept another solution.', a: [['may']],
+      ru: 'Общество вправе принять другое решение' },
+    { s: 'The test ___ be repeated.', a: [['need not']],
+      ru: 'испытание повторять не нужно' },
+    { s: 'The builder ___ submit the drawings for approval.', a: [['is required to']],
+      ru: 'строитель обязан представить чертежи на согласование' },
+  ],
+  why: 'Оборот <b>is / are to be</b> — язык Правил: тот же уровень обязательности, что у <i>shall</i>. Отрицание строится как <b>is not to be</b>. После <b>need not</b> и <b>must not</b> инфинитив идёт без <i>to</i>, а после <b>be required</b> — с <i>to</i>.',
+},
+{
+  id: 'dm-3', unit: 'td-modal', src: 'модальные 3', topic: 'степень обязательности', type: 'sort',
+  q: 'Разложите пункты по степени обязательности.',
+  cats: { r: 'требование', c: 'рекомендация', p: 'разрешение', f: 'запрет' },
+  items: [
+    { t: 'Every weld shall be inspected.', c: 'r' },
+    { t: 'Scantlings are to be in accordance with the Rules.', c: 'r' },
+    { t: 'The edges should be ground smooth.', c: 'c' },
+    { t: 'It is recommended that the tank be tested hydraulically.', c: 'c' },
+    { t: 'The Society may accept an equivalent.', c: 'p' },
+    { t: 'The builder is allowed to change the sequence.', c: 'p' },
+    { t: 'Hot work must not start without a permit.', c: 'f' },
+    { t: 'The opening shall not be cut in the sheerstrake.', c: 'f' },
+  ],
+  why: 'Уровень обязательности читается по глаголу, а не по интонации: <i>shall</i> и <i>are to be</i> — требование, <i>should</i> и <i>it is recommended</i> — рекомендация, <i>may</i> и <i>is allowed to</i> — разрешение, <i>must not</i> и <i>shall not</i> — запрет.',
+},
+{
+  id: 'dm-4', unit: 'td-modal', src: 'модальные 4', topic: 'обороты с be', type: 'build',
+  q: 'Соберите предложения с оборотами вместо модальных глаголов.',
+  items: [
+    { ru: 'Сварочные материалы подлежат одобрению Общества.',
+      a: 'Welding consumables are required to be approved by the Society.',
+      extra: ['subject'] },
+    { ru: 'Судно подлежит ежегодному освидетельствованию.',
+      a: 'The vessel is subject to annual survey.', extra: ['of'] },
+    { ru: 'Проект должен отвечать Правилам.',
+      a: 'The design shall comply with the Rules.', extra: ['to'] },
+  ],
+  why: 'Запомните предлоги: <b>be required to</b> + инфинитив, <b>be subject to</b> + существительное, <b>comply with</b> + документ. Сочетания «subject of» и «comply to» в этом значении неверны.',
+},
+{
+  id: 'dm-5', unit: 'td-modal', src: 'модальные 5', topic: 'значения глаголов', type: 'match',
+  q: 'Подберите значение, закреплённое за глаголом в тексте правил.',
+  pairs: [
+    ['shall', 'обязательное требование'],
+    ['should', 'рекомендация'],
+    ['may', 'разрешение'],
+    ['can', 'техническая возможность'],
+    ['must not', 'категорический запрет'],
+    ['need not', 'можно не делать'],
+  ],
+  why: 'В нормативном тексте эти значения не пересекаются. Именно поэтому <i>shall</i> нельзя читать как будущее время: в пункте правил оно всегда означает обязанность.',
+},
+
+/* ================= условные предложения ================= */
+{
+  id: 'dc-1', unit: 'td-cond', src: 'условные 1', topic: 'типы условных предложений', type: 'fill',
+  q: 'Раскройте скобки. Тип условного предложения определите по смыслу.',
+  items: [
+    { s: 'If the pressure ___ (fall) below two bar, the alarm operates.',
+      a: [['falls']], ru: 'нулевой тип: так работает всегда' },
+    { s: 'If the gap ___ (exceed) 3 mm, the joint must be re-prepared.',
+      a: [['exceeds']], ru: 'нулевой тип с модальным глаголом' },
+    { s: 'If the yard ___ (deliver) the drawings on Monday, we ___ (cut) the plates on Tuesday.',
+      a: [['delivers'], ['will cut']], ru: 'первый тип: реальный случай в будущем' },
+    { s: 'If the hull ___ (be) built of aluminium, its weight would be lower.',
+      a: [['were', 'was']], ru: 'второй тип: иной вариант конструкции' },
+    { s: 'If the gap had been measured, the distortion ___ (not occur).',
+      a: [['would not have occurred']], ru: 'третий тип: разбор происшествия' },
+  ],
+  why: 'После <b>if</b> будущее время не ставится: «если давление упадёт» — <i>if the pressure falls</i>. Во втором типе после <i>if</i> идёт прошедшее время, в третьем — <i>had been</i>, а в главной части <b>would have</b> плюс третья форма.',
+},
+{
+  id: 'dc-2', unit: 'td-cond', src: 'условные 2', topic: 'союзы условия', type: 'choice',
+  q: 'Выберите союз, которым начинается пункт документа.',
+  items: [
+    { s: '___ otherwise specified, all dimensions are in millimetres.',
+      opts: [
+        { t: 'Unless', ok: true, why: '<i>unless</i> значит «если не» и стоит в стандартной формуле чертежа.' },
+        { t: 'If not', why: 'сочетание <i>if not</i> так не употребляется в начале пункта.' },
+        { t: 'Provided', why: '<i>provided</i> вводит положительное условие, а нужен отрицательный смысл.' },
+      ] },
+    { s: '___ the thickness exceeds 25 mm, preheating is required.',
+      opts: [
+        { t: 'Where', ok: true, why: 'в правилах <i>where</i> значит «в тех случаях, когда».' },
+        { t: 'Which', why: '<i>which</i> — относительное местоимение, придаточное условия оно не вводит.' },
+        { t: 'In case of', why: 'после <i>in case of</i> ставится существительное, а не целое предложение.' },
+      ] },
+    { s: '___ a blackout, the emergency generator starts automatically.',
+      opts: [
+        { t: 'In the event of', ok: true, why: 'официальный оборот с существительным: «в случае обесточивания».' },
+        { t: 'In the event', why: 'без предлога <i>of</i> оборот требует придаточного с <i>that</i>.' },
+        { t: 'In case', why: 'британское <i>in case</i> без <i>of</i> значит «на случай, если» и требует предложения.' },
+      ] },
+    { s: 'The Society may accept an alternative ___ the strength is equivalent.',
+      opts: [
+        { t: 'provided that', ok: true, why: 'вводит условие принятия: «при условии, что».' },
+        { t: 'unless', why: 'получился бы обратный смысл: «если прочность не равноценна».' },
+        { t: 'otherwise', why: '<i>otherwise</i> значит «в противном случае» и придаточного не вводит.' },
+      ] },
+  ],
+  why: 'Каждый союз тянет за собой свою грамматику: <b>unless</b> и <b>provided that</b> — придаточное предложение, <b>in case of</b> и <b>in the event of</b> — существительное, <b>where</b> в правилах равно «если».',
+},
+{
+  id: 'dc-3', unit: 'td-cond', src: 'условные 3', topic: 'инверсия в условии', type: 'build',
+  q: 'Соберите предложения без союза <i>if</i>: вспомогательный глагол выносится вперёд.',
+  items: [
+    { ru: 'Если насос откажет, автоматически пускается резервный.',
+      a: 'Should the pump fail, the standby pump starts automatically.',
+      extra: ['fails'] },
+    { ru: 'Если бы зазор измерили, деформации не возникло бы.',
+      a: 'Had the gap been measured, the distortion would not have occurred.',
+      extra: ['if'] },
+  ],
+  why: 'В официальном стиле <i>if</i> убирают, а глагол ставят перед подлежащим: <b>should the pump fail</b>, <b>had the gap been measured</b>. После <i>should</i> идёт инфинитив без окончания, поэтому «should the pump fails» — ошибка.',
+},
+{
+  id: 'dc-4', unit: 'td-cond', src: 'условные 4', topic: 'инструкция по шагам', type: 'order',
+  q: 'Расставьте пункты инструкции по действиям при срабатывании сигнализации.',
+  lines: [
+    'If the alarm sounds, stop the pump immediately.',
+    'Close the valve on the discharge line.',
+    'Check the pressure gauge of the standby pump.',
+    'If the pressure does not rise, inform the duty engineer.',
+    'Record the time and the readings in the log book.',
+  ],
+  why: 'Инструкция строится по цепочке «условие — действие»: сначала остановка и отсечение, затем проверка, затем доклад и запись. Обратите внимание, что в обоих условных предложениях после <i>if</i> стоит настоящее время.',
+},
+{
+  id: 'dc-5', unit: 'td-cond', src: 'условные 5', topic: 'значения союзов', type: 'match',
+  q: 'Подберите русское соответствие союзу или обороту.',
+  pairs: [
+    ['unless', 'если не'],
+    ['provided that', 'при условии, что'],
+    ['in the event of', 'в случае (перед существительным)'],
+    ['where', 'в тех случаях, когда'],
+    ['if any', 'если таковые имеются'],
+    ['otherwise', 'иначе, в противном случае'],
+  ],
+  why: 'Оборот <i>if any</i> обычно стоит в запятых после существительного: <i>defects, if any, are to be reported</i>. Слово <i>otherwise</i> в формуле <i>unless otherwise specified</i> значит «иное», а после точки с запятой — «в противном случае».',
+},
+
+/* ================= причастные обороты ================= */
+{
+  id: 'dt-1', unit: 'td-part', src: 'причастие 1', topic: 'форма причастия', type: 'choice',
+  q: 'Выберите форму причастия.',
+  items: [
+    { s: 'The plate ___ by the machine is 8 mm thick.',
+      opts: [
+        { t: 'cut', ok: true, why: 'над листом действуют, поэтому нужна третья форма; у <i>cut</i> она совпадает с первой.' },
+        { t: 'cutting', why: 'это значило бы, что лист сам режет что-то.' },
+        { t: 'to cut', why: 'инфинитив здесь дал бы значение цели, а не определения.' },
+      ] },
+    { s: 'A crack ___ at a hatch corner is dangerous.',
+      opts: [
+        { t: 'starting', ok: true, why: 'трещина действует сама: «начинающаяся у угла люка».' },
+        { t: 'started', why: 'третья форма означала бы, что трещину кто-то начал.' },
+        { t: 'being started', why: 'этот оборот означал бы длящееся действие над трещиной.' },
+      ] },
+    { s: 'The tank ___ tested now is the fore peak.',
+      opts: [
+        { t: 'being', ok: true, why: '<i>being tested</i> — испытание идёт над танком прямо сейчас.' },
+        { t: 'having', why: '<i>having tested</i> означало бы, что танк сам провёл испытание.' },
+        { t: 'was', why: 'личная форма глагола требует союза: <i>the tank which was tested</i>.' },
+      ] },
+    { s: '___ the results, the surveyor signed the report.',
+      opts: [
+        { t: 'Having checked', ok: true, why: 'сначала проверил, потом подписал — предшествующее действие.' },
+        { t: 'Having been checked', why: 'пассив относился бы к самому сюрвейеру, а проверял он.' },
+        { t: 'Checked', why: 'третья форма в начале предложения означала бы действие над подлежащим.' },
+      ] },
+  ],
+  why: 'Форма на <b>-ing</b> говорит, что предмет действует сам; третья форма — что действие производят над ним; <b>being + V3</b> — что действие идёт сейчас; <b>having + V3</b> — что оно произошло раньше главного.',
+},
+{
+  id: 'dt-2', unit: 'td-part', src: 'причастие 2', topic: 'сокращение придаточных', type: 'fill',
+  q: 'Сократите придаточное до причастного оборота: впишите нужную форму.',
+  items: [
+    { s: 'the plates which are cut by machine → the plates ___ by machine',
+      a: [['cut']], ru: 'листы, нарезанные на станке' },
+    { s: 'the pipes which pass through the bulkhead → the pipes ___ through the bulkhead',
+      a: [['passing']], ru: 'трубы, проходящие через переборку' },
+    { s: 'the section that was assembled in the shop → the section ___ in the shop',
+      a: [['assembled']], ru: 'секция, собранная в цехе' },
+    { s: 'the tank which is being tested → the tank ___ tested',
+      a: [['being']], ru: 'танк, который испытывают' },
+    { s: 'the members which are subject to fatigue → the members ___ to fatigue',
+      a: [['subject']], ru: 'связи, подверженные усталости' },
+  ],
+  why: 'При сокращении уходят союз <i>which</i> или <i>that</i> и личная форма глагола <b>be</b>. Остаётся причастие или, как в последней строке, прилагательное с предлогом.',
+},
+{
+  id: 'dt-3', unit: 'td-part', src: 'причастие 3', topic: 'обстоятельственные обороты', type: 'build',
+  q: 'Соберите предложения с причастными оборотами.',
+  items: [
+    { ru: 'Проверив результаты, сюрвейер подписал отчёт.',
+      a: 'Having checked the results, the surveyor signed the report.',
+      extra: ['checking'] },
+    { ru: 'Так как зазор был слишком велик, стык подготовили заново.',
+      a: 'The gap being too large, the joint was re-prepared.', extra: ['was'] },
+    { ru: 'При работающем насосе давление оставалось устойчивым.',
+      a: 'With the pump running, the pressure remained stable.', extra: ['run'] },
+  ],
+  why: 'Первый оборот относится к подлежащему главной части, поэтому исполнитель — <i>the surveyor</i>. Во втором и третьем у оборота своё подлежащее: это независимый причастный оборот, и предлог <b>with</b> — его обычный признак.',
+},
+{
+  id: 'dt-4', unit: 'td-part', src: 'причастие 4', topic: 'причастие и герундий', type: 'sort',
+  q: 'Что перед вами: причастие (отвечает на вопрос «какой») или герундий (отвечает на вопрос «что»)?',
+  cats: { p: 'причастие', g: 'герундий' },
+  items: [
+    { t: 'the man welding the seam', c: 'p' },
+    { t: 'a crack starting at the corner', c: 'p' },
+    { t: 'the section being assembled', c: 'p' },
+    { t: 'welding the seam takes two hours', c: 'g' },
+    { t: 'the edges are bevelled before welding', c: 'g' },
+    { t: 'preheating reduces the risk of cracking', c: 'g' },
+    { t: 'the yard avoided welding overhead', c: 'g' },
+  ],
+  why: 'Причастие определяет существительное и стоит рядом с ним. Герундий сам ведёт себя как существительное: он бывает подлежащим, дополнением и стоит после предлога (<i>before welding</i>).',
+},
+{
+  id: 'dt-5', unit: 'td-part', src: 'причастие 5', topic: 'перевод оборотов', type: 'match',
+  q: 'Подберите русский перевод причастного оборота.',
+  pairs: [
+    ['the welded seam', 'сварной шов'],
+    ['the seam being welded', 'шов, который сваривают'],
+    ['the seam welded from both sides', 'шов, сваренный с двух сторон'],
+    ['having welded the seam', 'сварив шов'],
+    ['with the tank empty', 'при пустом танке'],
+  ],
+  why: 'Одиночное причастие стоит перед существительным, а оборот с зависимыми словами — после него. Русский перевод почти всегда переставляет части местами.',
+},
+
+/* ================= числа, размеры, допуски, единицы ================= */
+{
+  id: 'dn-1', unit: 'td-num', src: 'числа 1', topic: 'чтение записи вслух', type: 'match',
+  q: 'Подберите к записи её произносимую форму.',
+  pairs: [
+    ['12.5 mm', 'twelve point five millimetres'],
+    ['1:50', 'one to fifty'],
+    ['Ø 60', 'diameter sixty'],
+    ['40 ±0.2', 'forty plus or minus nought point two'],
+    ['M20×1.5', 'M twenty by one point five'],
+    ['10⁻⁶', 'ten to the minus six'],
+    ['5 %', 'five per cent'],
+  ],
+  why: 'Обозначение читают в порядке записи: знак, номинальный размер, отклонение. Двоеточие масштаба произносится как <b>to</b>, знак × между размерами — как <b>by</b>, а после десятичной точки цифры называют по одной.',
+},
+{
+  id: 'dn-2', unit: 'td-num', src: 'числа 2', topic: 'слова при числах', type: 'fill',
+  q: 'Впишите пропущенное слово.',
+  items: [
+    { s: 'The drawing is made to a scale of one ___ fifty.', a: [['to']],
+      ru: 'масштаб 1:50' },
+    { s: 'The size is forty plus ___ minus nought point two.', a: [['or']],
+      ru: '40 ±0,2' },
+    { s: 'Ten ___ the minus six metres is one micrometre.', a: [['to']],
+      ru: '10⁻⁶ м' },
+    { s: 'The gap is to be not ___ than 3 mm.', a: [['more', 'greater']],
+      ru: 'зазор не более 3 мм' },
+    { s: 'The thickness is to be not ___ than 8 mm.', a: [['less']],
+      ru: 'толщина не менее 8 мм' },
+    { s: 'The pump delivers sixty ___ metres per hour.', a: [['cubic']],
+      ru: '60 м³/ч' },
+  ],
+  why: 'Запомните три формулы предельных значений: <b>not less than</b> — не менее, <b>not more than</b> — не более, <b>plus or minus</b> — предельные отклонения. Степень читается через <b>to the</b>: <i>ten to the minus six</i>.',
+},
+{
+  id: 'dn-3', unit: 'td-num', src: 'числа 3', topic: 'запись чисел', type: 'choice',
+  q: 'Выберите правильную английскую запись или форму.',
+  items: [
+    { s: 'The thickness of the plate is ___ .',
+      opts: [
+        { t: '12.5 mm', ok: true, why: 'десятичный разделитель в английском тексте — точка.' },
+        { t: '12,5 mm', why: 'запятая читается как разряд тысяч: получилось бы 12 500 мм.' },
+        { t: '12 500 mm', why: 'это другое число: двенадцать с половиной тысяч миллиметров.' },
+      ] },
+    { s: 'Five ___ of the welds were rejected.',
+      opts: [
+        { t: 'per cent', ok: true, why: 'у <i>per cent</i> нет формы множественного числа.' },
+        { t: 'per cents', why: 'такой формы в английском не существует.' },
+        { t: 'percentage', why: '<i>percentage</i> — доля вообще, с числом оно не употребляется.' },
+      ] },
+    { s: '___ 8 mm plate is used for the deck.',
+      opts: [
+        { t: 'An', ok: true, why: 'артикль выбирают по звучанию: вслух это <i>an eight-millimetre plate</i>.' },
+        { t: 'A', why: 'перед гласным звуком нужен <i>an</i>.' },
+        { t: 'Eight', why: 'толщина уже названа цифрой, второй раз её не повторяют.' },
+      ] },
+    { s: 'The fillet weld is ___ .',
+      opts: [
+        { t: '6 mm', ok: true, why: 'единица пишется через пробел после числа и без точки.' },
+        { t: '6 mms', why: 'сокращение единицы не имеет формы множественного числа.' },
+        { t: '6mm.', why: 'нужен пробел между числом и единицей, а точка в конце сокращения не ставится.' },
+      ] },
+  ],
+  why: 'Три правила записи: разделитель — точка, единица отделяется пробелом и не получает окончания, а перед сочетанием «число + единица» артикль ставится по звучанию: <i>an 8 mm plate</i>, но <i>a 6 mm weld</i>.',
+},
+{
+  id: 'dn-4', unit: 'td-num', src: 'числа 4', topic: 'виды числовых записей', type: 'sort',
+  q: 'Разложите записи по видам.',
+  cats: { d: 'десятичная дробь', f: 'обыкновенная дробь', r: 'диапазон или предел' },
+  items: [
+    { t: '12.5 mm', c: 'd' },
+    { t: '0.008 mm', c: 'd' },
+    { t: '3.14', c: 'd' },
+    { t: '3/4 in', c: 'f' },
+    { t: '5 1/2 in', c: 'f' },
+    { t: '2/3', c: 'f' },
+    { t: '20–25 mm', c: 'r' },
+    { t: 'not more than 3 mm', c: 'r' },
+  ],
+  why: 'Десятичную дробь читают по цифрам после точки, обыкновенную — порядковым числительным (<i>three quarters</i>), а диапазон вводят словами <i>from … to</i>, <i>between … and</i> или формулой предела.',
+},
+{
+  id: 'dn-5', unit: 'td-num', src: 'числа 5', topic: 'произнесение вслух', type: 'build',
+  q: 'Соберите произносимую форму записи.',
+  items: [
+    { ru: '40 ±0,2 — сорок плюс-минус ноль целых две десятых',
+      a: 'forty plus or minus nought point two', extra: ['comma'] },
+    { ru: '60 м³/ч — шестьдесят кубических метров в час',
+      a: 'sixty cubic metres per hour', extra: ['square'] },
+    { ru: 'Масштаб 1:50 — масштаб один к пятидесяти',
+      a: 'the scale is one to fifty', extra: ['for'] },
+    { ru: '−5 °C — минус пять градусов Цельсия',
+      a: 'minus five degrees Celsius', extra: ['degree'] },
+  ],
+  why: 'В произносимой форме единица стоит во множественном числе (<i>metres</i>, <i>degrees</i>), а знак ± читается как <b>plus or minus</b>. Куб обозначается словом <b>cubic</b>, квадрат — словом <b>square</b>.',
+},
+
+);
