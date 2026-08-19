@@ -12,6 +12,7 @@
   </svg>`;
   const nav = [
     { h: '', k: 'index', t: 'Обзор' },
+    { h: 'level', k: 'level', t: 'Проверка уровня' },
     { t: 'Юниты', h: 'units', drop: [
       { h: 'units', k: 'units', t: 'Программа курса' },
       { h: 'u1', k: 'units', t: '1. First things first' },
