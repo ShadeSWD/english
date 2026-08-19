@@ -17,7 +17,7 @@ SITE = os.path.join(ROOT, 'site')
 ASSETS = os.path.join(SITE, 'assets')
 
 BANKS = sorted(f for f in os.listdir(ASSETS)
-               if f.startswith('tasks-u') and f.endswith('.js')) \
+               if f.startswith('tasks-') and f.endswith('.js')) \
     if os.path.isdir(ASSETS) else []
 
 TYPES = {'fill', 'choice', 'build', 'match', 'sort', 'order', 'dialog'}
@@ -63,7 +63,7 @@ def test_ids_unique(tasks):
     assert not dups, 'повторяющиеся id: %s' % ', '.join(map(str, dups))
 
 
-@pytest.mark.parametrize('unit', ['u1', 'u2', 'u3', 'u4'])
+@pytest.mark.parametrize('unit', ['u1', 'u2', 'u3', 'u4', 'u5', 'u6', 'u7'])
 def test_unit_coverage(tasks, unit):
     mine = [t for t in tasks if t.get('unit') == unit]
     assert len(mine) >= 35, 'в %s всего %d заданий' % (unit, len(mine))
@@ -191,7 +191,7 @@ def test_vocab_entries(vocab):
     assert not bad, '; '.join(bad[:20])
 
 
-@pytest.mark.parametrize('unit', ['u1', 'u2', 'u3', 'u4'])
+@pytest.mark.parametrize('unit', ['u1', 'u2', 'u3', 'u4', 'u5', 'u6', 'u7'])
 def test_unit_page_wired(unit):
     """Страница юнита подключает свой банк, движок и место для заданий."""
     page = os.path.join(SITE, unit + '.html')
@@ -212,7 +212,34 @@ def test_no_textbook_sentences(tasks):
         'Slava Orlov is a student',
         'The merry-go-round of university life',
         'A pessimist sees the difficulty',
+        'A cube has three dimensions, but a square has only two',
+        'There is not very much sand in this area',
+        'The clients know what they can expect',
+        'Books about the city’s history are written in many languages',
+        'In astronomy the attracting force is the gravitational force',
+        'You must not break the technical safety rules',
     ]
     blob = json.dumps(tasks, ensure_ascii=False)
     found = [m for m in marker if m in blob]
     assert not found, 'дословный текст пособия: %s' % ', '.join(found)
+
+
+@pytest.mark.parametrize('unit,page', [
+    ('r-yard', 'r-yard'), ('r-welding', 'r-welding'),
+    ('r-drawing', 'r-drawing'), ('wordforms', 'r-drawing'),
+])
+def test_tech_bank_wired(unit, page):
+    """Задания к техническим текстам подключены на своих страницах."""
+    p = os.path.join(SITE, page + '.html')
+    if not os.path.isfile(p):
+        pytest.skip('нет страницы %s' % page)
+    html = open(p, encoding='utf-8').read()
+    for need in ('assets/tasks-tech.js', 'assets/exercises.js', "unit: '%s'" % unit):
+        assert need in html, 'на странице %s нет «%s»' % (page, need)
+
+
+def test_tech_bank_coverage(tasks):
+    """Банк технических текстов покрывает все три страницы и словообразование."""
+    for unit in ('r-yard', 'r-welding', 'r-drawing', 'wordforms'):
+        mine = [t for t in tasks if t.get('unit') == unit]
+        assert len(mine) >= 5, 'в %s всего %d заданий' % (unit, len(mine))
