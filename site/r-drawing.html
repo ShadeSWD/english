@@ -167,6 +167,18 @@
   <div id="drill-gaps"></div>
   <div id="drill-order"></div>
 
+  <h2>Задания к тексту</h2>
+  <p>Интерактивные аналоги упражнений по чертежам и стандартам: виды и разрезы,
+  размеры, <i>less</i> и <i>fewer</i>, страдательный залог.</p>
+  <div id="tasks"></div>
+
+  <h2>Тренажёр словообразования</h2>
+  <p>Аналог задания 4.3 раздела «Building Ships»: дана основа — нужно назвать
+  существительное. После проверки показывается модель, по которой строится
+  форма: <i>join → joint</i>, <i>weld → welding</i>,
+  <i>penetrate → penetration</i>, <i>deep → depth</i>.</p>
+  <div id="wordforms"></div>
+
   <div class="chapnav">
     <span><a href="r-welding">← welding and joining</a></span>
     <span><a href="pictures">иллюстрации курса →</a></span>
@@ -238,6 +250,12 @@ DRILL.order(document.getElementById('drill-order'), [
   { s: 'The surveyor checks the drawings and the tests.', ru: 'Инспектор проверяет чертежи и испытания.',
     why: 'Артикль повторяется перед каждым однородным дополнением.' },
 ], { section: 'order', title: 'Порядок слов: чертежи и стандарты', total: 6 });
+</script>
+<script src="assets/tasks-tech.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'r-drawing', size: 5 });
+EXER.mount(document.getElementById('wordforms'), { unit: 'wordforms', size: 5 });
 </script>
 </body>
 </html>

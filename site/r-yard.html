@@ -138,6 +138,12 @@
   <div id="drill-gaps"></div>
   <div id="drill-order"></div>
 
+  <h2>Задания к тексту</h2>
+  <p>Интерактивные аналоги упражнений раздела «Building Ships»: подготовка к
+  постройке, типовой проект с его достоинствами и недостатками, этапы работы
+  на верфи. Задания идут блоками; проверенное сохраняется в браузере.</p>
+  <div id="tasks"></div>
+
   <div class="chapnav">
     <span><a href="reading">← указатель текстов</a></span>
     <span><a href="r-welding">welding and joining →</a></span>
@@ -204,6 +210,11 @@ DRILL.order(document.getElementById('drill-order'), [
   { s: 'The yard delivers the ship to the owner.', ru: 'Верфь сдаёт судно судовладельцу.',
     why: 'Косвенное дополнение с предлогом <i>to</i> идёт после прямого.' },
 ], { section: 'order', title: 'Порядок слов: постройка судна', total: 6 });
+</script>
+<script src="assets/tasks-tech.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'r-yard', size: 5 });
 </script>
 </body>
 </html>
