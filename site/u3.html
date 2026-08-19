@@ -202,9 +202,17 @@
   <h2>Слова юнита</h2>
   <div class="wordbox" data-page="u3"></div>
 
-  <h2>Проверка</h2>
-  <p>Десять заданий по грамматике юнита. Правильный ответ и объяснение
-  показываются сразу, результат сохраняется.</p>
+  <h2>Задания юнита</h2>
+  <p>Интерактивные аналоги всех упражнений этого раздела пособия: та же
+  грамматика и та же лексика, но свои предложения. Номер у каждой карточки —
+  номер упражнения в книге. Задания показываются блоками: закончив блок,
+  переходите к следующему; проверенное запоминается и не теряется после
+  перезагрузки страницы.</p>
+  <div id="tasks"></div>
+
+  <h2>Быстрая проверка</h2>
+  <p>Десять коротких вопросов по грамматике юнита вразбивку. Правильный ответ
+  и объяснение показываются сразу, результат сохраняется.</p>
   <div id="drill"></div>
 
   <div class="chapnav">
@@ -217,6 +225,11 @@
 <script src="assets/speak.js"></script>
 <script src="assets/lists.js"></script>
 <script src="assets/drill.js"></script>
+<script src="assets/tasks-u3.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+EXER.mount(document.getElementById('tasks'), { unit: 'u3', size: 6 });
+</script>
 <script>
 DRILL.grammar(document.getElementById('drill'), [
   { topic: 'there is / there are', q: '___ two lecture halls in this building.', a: 'There are',
