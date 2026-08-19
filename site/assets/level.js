@@ -72,7 +72,7 @@
 
   /* res — массив {code, id, axis, ok}; reached — коды показанных блоков. */
   function analyse(res, reached) {
-    var axes = {}, i;
+    var axes = {};
     AX.forEach(function (k) { axes[k] = { asked: 0, right: 0, score: null }; });
     res.forEach(function (r) {
       var a = axes[r.axis];
@@ -324,7 +324,6 @@
 
     /* ---- показ результата и совета ---- */
     function showResult(rec, prev) {
-      var res = [];
       /* восстанавливаем разбор из сохранённых счётчиков */
       var an = { axes: {}, rel: {}, cnt: {}, reached: rec.reached };
       AX.forEach(function (k) {
