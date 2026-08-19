@@ -51,6 +51,7 @@
       { h: 'd-dictation', k: 'drills', t: 'Диктант на слух' },
       { h: 'd-order', k: 'drills', t: 'Порядок слов' },
       { h: 'd-grammar', k: 'drills', t: 'Грамматика юнитов' },
+      { h: 'd-tasks', k: 'drills', t: 'Задания пособия' },
     ] },
     { h: 'vocab', k: 'vocab', t: 'Словарь' },
     { h: 'sources', k: 'sources', t: 'Источники' },

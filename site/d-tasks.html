@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Задания пособия — Английский язык для кораблестроителей</title>
+<meta name="description" content="Интерактивные аналоги всех упражнений всех семи юнитов пособия «Sailing out» и текстов по судостроению: вписать форму, выбрать вариант с разбором, собрать предложение, соотнести, разложить по колонкам, восстановить порядок, дополнить диалог. Автопроверка и статистика по темам.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Задания пособия<br><span style="font-weight:400;font-size:.62em">упражнения юнитов 1–7 «Sailing out» и технических текстов с автопроверкой</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Каждому упражнению пособия отвечает задание с автопроверкой; номер
+      на карточке — номер упражнения в книге.</li>
+      <li>Грамматика и лексика те же, предложения свои: пособие нужно держать
+      рядом, а не переписывать.</li>
+      <li>Семь видов работы: вписать форму, выбрать вариант с разбором, собрать
+      предложение из блоков, соотнести, разложить по колонкам, восстановить
+      порядок, дополнить диалог.</li>
+      <li>Задания идут блоками по шесть; проверенное сохраняется в браузере
+      и не теряется после перезагрузки.</li>
+    </ul>
+  </div>
+
+  <p class="lead">Выберите юнит. Внутри юнита задания идут в том же порядке,
+  что и в пособии, поэтому их удобно решать параллельно с занятием.</p>
+
+  <div class="chips" id="unit-chips">
+    <span class="chip on" data-u="u1">Юнит 1. First things first</span>
+    <span class="chip" data-u="u2">Юнит 2. Day in, day out</span>
+    <span class="chip" data-u="u3">Юнит 3. A pass to success</span>
+    <span class="chip" data-u="u4">Юнит 4. Alma mater</span>
+    <span class="chip" data-u="u5">Юнит 5. Serving mankind</span>
+    <span class="chip" data-u="u6">Юнит 6. Peter’s great creation</span>
+    <span class="chip" data-u="u7">Юнит 7. In the brave new world</span>
+    <span class="chip" data-u="r-yard">Текст: постройка судна</span>
+    <span class="chip" data-u="r-welding">Текст: сварка</span>
+    <span class="chip" data-u="r-drawing">Текст: чертежи</span>
+    <span class="chip" data-u="wordforms">Словообразование</span>
+  </div>
+
+  <div id="tasks"></div>
+
+  <div class="note tip">Теория к заданиям — на страницах юнитов:
+  <a href="u1">to be, местоимения и can</a>, <a href="u2">Present Simple</a>,
+  <a href="u3">there is / are и артикли</a>, <a href="u4">Past Simple</a>,
+  <a href="u5">степени сравнения и some / any</a>,
+  <a href="u6">страдательный залог</a>,
+  <a href="u7">модальные глаголы и придаточные времени</a>. Задания к техническим
+  текстам продублированы на страницах <a href="r-yard">постройки судна</a>,
+  <a href="r-welding">сварки</a> и <a href="r-drawing">чертежей</a>.</div>
+
+  <div class="chapnav">
+    <span><a href="d-grammar">← грамматика юнитов</a></span>
+    <span><a href="drills">все тренажёры →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="lib/endict.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/tasks-u1.js"></script>
+<script src="assets/tasks-u2.js"></script>
+<script src="assets/tasks-u3.js"></script>
+<script src="assets/tasks-u4.js"></script>
+<script src="assets/tasks-u5.js"></script>
+<script src="assets/tasks-u6.js"></script>
+<script src="assets/tasks-u7.js"></script>
+<script src="assets/tasks-tech.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+(function () {
+  const host = document.getElementById('tasks');
+  const chips = document.getElementById('unit-chips');
+  function show(u) {
+    chips.querySelectorAll('.chip').forEach((c) => c.classList.toggle('on', c.dataset.u === u));
+    EXER.mount(host, { unit: u, size: 6 });
+  }
+  chips.querySelectorAll('.chip').forEach((c) => {
+    c.addEventListener('click', () => show(c.dataset.u));
+  });
+  const pre = new URL(window.location.href).searchParams.get('u');
+  const known = [...chips.querySelectorAll('.chip')].map((c) => c.dataset.u);
+  show(known.indexOf(pre) >= 0 ? pre : 'u1');
+})();
+</script>
+</body>
+</html>
