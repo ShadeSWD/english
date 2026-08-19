@@ -114,6 +114,7 @@
     const names = {
       cards: 'Карточки', gaps: 'Пропущенное слово', match: 'Слово и картинка',
       dictation: 'Диктант', order: 'Порядок слов', grammar: 'Грамматика юнитов',
+      tasks: 'Задания юнитов 1–4',
     };
     const st = window.DRILL.stats();
     const keys = Object.keys(names);

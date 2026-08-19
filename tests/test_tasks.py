@@ -24,7 +24,9 @@ TYPES = {'fill', 'choice', 'build', 'match', 'sort', 'order', 'dialog'}
 
 _LOADER = r'''
 const fs = require('fs'), vm = require('vm');
-const files = process.argv.slice(2);
+/* node -e кладёт аргументы в argv начиная с первого, поэтому берём всё,
+   что похоже на путь к банку, а не фиксированный срез */
+const files = process.argv.filter((a) => a.endsWith('.js'));
 const ctx = vm.createContext({ window: {} });
 for (const f of files) vm.runInContext(fs.readFileSync(f, 'utf8'), ctx, { filename: f });
 process.stdout.write(JSON.stringify(ctx.window.TASKS || []));
@@ -154,6 +156,51 @@ def test_type_payload(tasks):
                     if not o.get('why'):
                         bad.append('%s: у реплики %r нет объяснения' % (tid, o.get('t')))
     assert not bad, '; '.join(bad[:20])
+
+
+@pytest.fixture(scope='module')
+def vocab():
+    if not shutil.which('node'):
+        pytest.skip('node не установлен')
+    src = os.path.join(ASSETS, 'vocab.js')
+    load = ('const fs=require("fs"),vm=require("vm");const c=vm.createContext({});'
+            'vm.runInContext(fs.readFileSync(%r,"utf8"),c);'
+            'process.stdout.write(JSON.stringify({v:c.VOCAB,t:c.TOPICS,p:c.PAGES}));' % src)
+    r = subprocess.run(['node', '-e', load], capture_output=True, text=True)
+    assert r.returncode == 0, 'словарь не загрузился: %s' % r.stderr.strip()[:300]
+    return json.loads(r.stdout)
+
+
+def test_vocab_entries(vocab):
+    """Каждая запись словаря курса заполнена и ссылается на живые тему и страницу."""
+    bad = []
+    seen = set()
+    for e in vocab['v']:
+        w = e.get('w', '?')
+        if w.lower() in seen:
+            bad.append('повтор: %s' % w)
+        seen.add(w.lower())
+        for field in ('w', 'ipa', 'pos', 'ru', 'ex', 'exru', 'topic', 'at'):
+            if not e.get(field):
+                bad.append('%s: нет поля %s' % (w, field))
+        if e.get('topic') and e['topic'] not in vocab['t']:
+            bad.append('%s: неизвестная тема %r' % (w, e['topic']))
+        for a in (e.get('at') or []):
+            if a not in vocab['p']:
+                bad.append('%s: неизвестная страница %r' % (w, a))
+    assert not bad, '; '.join(bad[:20])
+
+
+@pytest.mark.parametrize('unit', ['u1', 'u2', 'u3', 'u4'])
+def test_unit_page_wired(unit):
+    """Страница юнита подключает свой банк, движок и место для заданий."""
+    page = os.path.join(SITE, unit + '.html')
+    if not os.path.isfile(page):
+        pytest.skip('нет страницы %s' % unit)
+    html = open(page, encoding='utf-8').read()
+    for need in ('assets/tasks-%s.js' % unit, 'assets/exercises.js',
+                 'id="tasks"', "unit: '%s'" % unit):
+        assert need in html, 'на странице %s нет «%s»' % (unit, need)
 
 
 def test_no_textbook_sentences(tasks):
