@@ -119,7 +119,7 @@
     const e = lookup(word);
     card = document.createElement('div');
     card.className = 'wordcard';
-    const head = `<span class="x" title="закрыть">×</span><span class="hw">${esc(e ? e.w : word)}</span>`
+    const head = `<span class="x" title="закрыть">&times;</span><span class="hw">${esc(e ? e.w : word)}</span>`
       + (e && e.ipa ? `<span class="ipa">[${esc(e.ipa)}]</span>` : '')
       + (e && e.pos ? `<span class="pos">${esc(e.pos)}</span>` : '');
     let body;
@@ -127,12 +127,38 @@
       body = `<div class="ru">${esc(e.ru)}</div>`
         + (e.ex ? `<div class="ex">${esc(e.ex)}<i>${esc(e.exru || '')}</i></div>` : '');
     } else {
-      body = '<div class="nodict">Слова нет в словаре курса — произношение всё равно доступно.</div>';
+      /* Слова нет в словаре курса — спрашиваем общий словарь кластера
+         (45 тысяч статей, подгружается шардом по первой букве). */
+      body = '<div class="nodict">ищу в общем словаре…</div>';
     }
     const links = e && e.topic
       ? `<a class="btn" href="vocab?q=${encodeURIComponent(e.w)}">в словаре</a>` : '';
     card.innerHTML = head + body
       + `<div class="row2"><button class="btn speak-again" type="button">🔊 повторить</button>${links}</div>`;
+    if (!e && window.EnDict) {
+      const target = card;
+      window.EnDict.lookup(word).then((g) => {
+        if (target !== card) return;                 // карточку уже закрыли
+        const slot = target.querySelector('.nodict');
+        if (!slot) return;
+        if (!g) {
+          slot.textContent = 'Слова нет ни в словаре курса, ни в общем словаре — произношение всё равно доступно.';
+          return;
+        }
+        slot.className = 'ru';
+        slot.textContent = g.ru;
+        if (g.ipa && !target.querySelector('.ipa')) {
+          target.querySelector('.hw').insertAdjacentHTML('afterend',
+            `<span class="ipa">[${esc(g.ipa)}]</span>`);
+        }
+        if (g.pos && !target.querySelector('.pos')) {
+          (target.querySelector('.ipa') || target.querySelector('.hw'))
+            .insertAdjacentHTML('afterend', `<span class="pos">${esc(g.pos)}</span>`);
+        }
+        slot.insertAdjacentHTML('afterend',
+          '<div class="ex" style="color:#6b6b74">общий словарь кластера</div>');
+      });
+    }
     document.body.appendChild(card);
     const r = el.getBoundingClientRect();
     const top = r.bottom + window.scrollY + 6;
