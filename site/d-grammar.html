@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Грамматика юнитов — Английский язык для кораблестроителей</title>
+<meta name="description" content="Сводный тренажёр по грамматике семи юнитов: времена, артикли, степени сравнения, местоимения, страдательный залог, условные предложения и модальные глаголы. Автопроверка с объяснением.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Грамматика юнитов<br><span style="font-weight:400;font-size:.62em">всё, что разобрано в юнитах 1–7</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Задания перемешаны: времена, артикли, местоимения, степени
+      сравнения, страдательный залог, условие и модальные глаголы.</li>
+      <li>Над каждым заданием указана тема — по ней легко найти нужный юнит.</li>
+      <li>После ответа даётся правило, а не только правильный вариант.</li>
+    </ul>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note tip">Разбор тем: <a href="u1">to be и can</a>,
+  <a href="u2">Present Simple</a>, <a href="u3">артикли и вопросы</a>,
+  <a href="u4">Past Simple</a>, <a href="u5">степени сравнения</a>,
+  <a href="u6">страдательный залог</a>, <a href="u7">условие и модальные</a>.</div>
+
+  <div class="chapnav">
+    <span><a href="d-order">← порядок слов</a></span>
+    <span><a href="drills">все тренажёры →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+DRILL.grammar(document.getElementById('drill'), [
+  { topic: 'юнит 1 · глагол to be', q: 'The frames ___ welded to the plating.', a: 'are',
+    opts: ['are', 'is', 'am'], why: 'Подлежащее <i>frames</i> во множественном числе — <b>are</b>.' },
+  { topic: 'юнит 1 · притяжательные', q: 'The vessel is new. ___ draught is six metres.',
+    a: 'Its', opts: ['Its', 'It’s', 'Their'],
+    why: '<b>Its</b> — притяжательное «его» для предмета; <i>it’s</i> = <i>it is</i>.' },
+  { topic: 'юнит 1 · модальный can', q: 'A naval architect ___ read drawings.', a: 'can',
+    opts: ['can', 'cans', 'can to'], why: 'После <b>can</b> — инфинитив без <i>to</i>, окончания <i>-s</i> нет.' },
+  { topic: 'юнит 1 · множественное число', q: 'One property — many ___.', a: 'properties',
+    opts: ['properties', 'propertys', 'property'], why: 'Согласная + <i>y</i> → <b>-ies</b>.' },
+  { topic: 'юнит 2 · Present Simple', q: 'He ___ in the hall of residence.', a: 'lives',
+    opts: ['lives', 'live', 'living'], why: 'Третье лицо единственного числа требует окончания <b>-s</b>.' },
+  { topic: 'юнит 2 · вопрос с do/does', q: '___ she attend the lecture on Mondays?', a: 'Does',
+    opts: ['Does', 'Do', 'Is'], why: 'С <i>she</i> вопрос строится вспомогательным <b>does</b>, глагол — без <i>-s</i>.' },
+  { topic: 'юнит 2 · отрицание', q: 'They ___ carry out experiments on Friday.', a: 'don’t',
+    opts: ['don’t', 'doesn’t', 'aren’t'], why: 'С <i>they</i> — <b>don’t</b>; <i>aren’t</i> при смысловом глаголе не ставится.' },
+  { topic: 'юнит 2 · наречия частотности', q: 'He ___ takes notes at the lecture.', a: 'usually',
+    opts: ['usually', 'usual', 'usualy'], why: 'Наречие <b>usually</b> стоит перед смысловым глаголом.' },
+  { topic: 'юнит 2 · объектные местоимения', q: 'The teacher explained the drawing to ___.',
+    a: 'us', opts: ['us', 'we', 'our'], why: 'После предлога ставится объектное местоимение <b>us</b>.' },
+  { topic: 'юнит 3 · there is / there are', q: '___ two pumps in the engine room.', a: 'There are',
+    opts: ['There are', 'There is', 'It is'], why: 'Подлежащее <i>two pumps</i> во множественном числе — <b>there are</b>.' },
+  { topic: 'юнит 3 · артикль a / an', q: 'It takes ___ hour to get to the shipyard.', a: 'an',
+    opts: ['an', 'a', 'the'], why: 'Артикль выбирается по ЗВУКУ: в <i>hour</i> первый звук гласный, значит <b>an</b>.' },
+  { topic: 'юнит 3 · артикль a / an', q: 'He is ___ university student.', a: 'a',
+    opts: ['a', 'an', 'the'], why: 'Слово <i>university</i> начинается со звука [j], поэтому <b>a</b>.' },
+  { topic: 'юнит 3 · определённый артикль', q: 'This is a drawing. ___ drawing shows the midship section.',
+    a: 'The', opts: ['The', 'A', '—'], why: 'При повторном упоминании предмета ставится <b>the</b>.' },
+  { topic: 'юнит 3 · специальные вопросы', q: '___ often do you have laboratory work?', a: 'How',
+    opts: ['How', 'What', 'Which'], why: 'Частота спрашивается сочетанием <b>how often</b>.' },
+  { topic: 'юнит 4 · Past Simple глагола to be', q: 'The test tank ___ built in 1940.', a: 'was',
+    opts: ['was', 'were', 'is'], why: 'Подлежащее в единственном числе, время прошедшее — <b>was</b>.' },
+  { topic: 'юнит 4 · Past Simple', q: 'They ___ the model in the tank last week.', a: 'tested',
+    opts: ['tested', 'test', 'testing'], why: 'Правильный глагол в прошедшем времени получает <b>-ed</b>.' },
+  { topic: 'юнит 4 · неправильные глаголы', q: 'The institute ___ a university in 1992.', a: 'became',
+    opts: ['became', 'become', 'becomed'], why: '<i>become</i> — неправильный глагол: <b>became</b>, <i>become</i>.' },
+  { topic: 'юнит 4 · вопрос с did', q: '___ he graduate from the university?', a: 'Did',
+    opts: ['Did', 'Was', 'Does'], why: 'Прошедшее время смыслового глагола — вопрос с <b>did</b>, глагол в первой форме.' },
+  { topic: 'юнит 4 · вопрос к подлежащему', q: '___ designed the first Russian test tank?', a: 'Who',
+    opts: ['Who', 'Whom', 'Who did'], why: 'В вопросе к подлежащему вспомогательный глагол не нужен: <b>Who designed…?</b>' },
+  { topic: 'юнит 5 · степени сравнения', q: 'An aluminium alloy is ___ than steel.', a: 'lighter',
+    opts: ['lighter', 'more light', 'lightest'], why: 'Короткое прилагательное образует сравнительную степень окончанием <b>-er</b>.' },
+  { topic: 'юнит 5 · степени сравнения', q: 'This is the ___ efficient coating of the three.', a: 'most',
+    opts: ['most', 'more', 'much'], why: 'Длинное прилагательное в превосходной степени — <b>the most</b> + прилагательное.' },
+  { topic: 'юнит 5 · исключения', q: 'The result is ___ than we expected.', a: 'better',
+    opts: ['better', 'gooder', 'more good'], why: '<i>good</i> — исключение: <b>better</b>, <i>the best</i>.' },
+  { topic: 'юнит 5 · much / many', q: 'How ___ water is there in the ballast tank?', a: 'much',
+    opts: ['much', 'many', 'few'], why: '<i>Water</i> — неисчисляемое, поэтому <b>how much</b>.' },
+  { topic: 'юнит 5 · some / any', q: 'We didn’t see ___ cracks in the weld.', a: 'any',
+    opts: ['any', 'some', 'no'], why: 'В отрицательном предложении употребляется <b>any</b>; вариант с <i>no</i> потребовал бы убрать <i>didn’t</i>.' },
+  { topic: 'юнит 6 · страдательный залог', q: 'The city ___ founded in 1703.', a: 'was',
+    opts: ['was', 'were', 'is'], why: 'Прошедшее время страдательного залога: <b>was</b> + причастие.' },
+  { topic: 'юнит 6 · страдательный залог', q: 'Ships ___ built of prefabricated blocks today.', a: 'are',
+    opts: ['are', 'is', 'were'], why: 'Настоящее время, подлежащее во множественном числе — <b>are</b> + причастие.' },
+  { topic: 'юнит 6 · by и with', q: 'The place for the fortress was chosen ___ Peter the Great.',
+    a: 'by', opts: ['by', 'with', 'of'], why: 'Деятель вводится предлогом <b>by</b>, орудие — <i>with</i>.' },
+  { topic: 'юнит 6 · Future Simple', q: 'A new block of flats ___ built next year.', a: 'will be',
+    opts: ['will be', 'will', 'is'], why: 'Будущее время страдательного залога: <b>will be</b> + причастие.' },
+  { topic: 'юнит 7 · условие I типа', q: 'If we ___ the size, the properties will change.', a: 'reduce',
+    opts: ['reduce', 'will reduce', 'reduced'], why: 'В придаточном условия будущее время не употребляется: <b>Present Simple</b>.' },
+  { topic: 'юнит 7 · придаточное времени', q: 'He will go into industry when he ___.', a: 'graduates',
+    opts: ['graduates', 'will graduate', 'graduated'], why: 'После <i>when</i> в значении будущего ставится <b>Present Simple</b>.' },
+  { topic: 'юнит 7 · модальные глаголы', q: 'You ___ smoke in the paint shop.', a: 'mustn’t',
+    opts: ['mustn’t', 'needn’t', 'shouldn’t'], why: '<b>mustn’t</b> — запрет; <i>needn’t</i> — отсутствие необходимости.' },
+  { topic: 'юнит 7 · пассивный инфинитив', q: 'The sensor must ___ from heat.', a: 'be protected',
+    opts: ['be protected', 'protect', 'protected'], why: 'После модального глагола страдательный залог имеет вид <b>be</b> + причастие.' },
+], { section: 'grammar', title: 'Грамматика юнитов 1–7', total: 15 });
+</script>
+</body>
+</html>

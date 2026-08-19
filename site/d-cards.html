@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карточки — Английский язык для кораблестроителей</title>
+<meta name="description" content="Тренажёр «карточки» с интервальным повторением: слово курса и его перевод в обе стороны, произношение, транскрипция и пример. Прогресс сохраняется в браузере.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Карточки<br><span style="font-weight:400;font-size:.62em">слово ↔ перевод с интервальным повторением</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>На лицевой стороне английское слово (или русский перевод), на
+      обороте — транскрипция, часть речи и значение.</li>
+      <li>Отвечайте честно: «знал» отодвигает слово на 1, 2, 4, 8 или 16 дней,
+      «не знал» возвращает его в ближайший подход.</li>
+      <li>Английская сторона произносится автоматически; кнопка «произнести»
+      повторяет.</li>
+      <li>Можно ограничить набор темой — например, только машинное отделение.</li>
+    </ul>
+  </div>
+
+  <div class="controls">
+    <label>направление
+      <select id="mode">
+        <option value="en2ru">английское слово → перевод</option>
+        <option value="ru2en">перевод → английское слово</option>
+        <option value="mix">вперемешку</option>
+      </select></label>
+    <label>тема <select id="topic"><option value="">все темы</option></select></label>
+    <label>карточек <select id="total">
+      <option>10</option><option>15</option><option>20</option></select></label>
+    <button class="btn primary" type="button" id="go">начать подход</button>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note tip">Слово «не знал» — не ошибка, а сигнал тренажёру.
+  Смотрите пример на обороте: он показывает слово в живом сочетании, и именно
+  сочетание запоминается лучше отдельного слова.</div>
+
+  <div class="chapnav">
+    <span><a href="drills">← все тренажёры</a></span>
+    <span><a href="d-gaps">пропущенное слово →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+(function () {
+  var sel = document.getElementById('topic');
+  Object.keys(TOPICS).forEach(function (k) {
+    var o = document.createElement('option');
+    o.value = k; o.textContent = TOPICS[k]; sel.appendChild(o);
+  });
+  function run() {
+    var t = sel.value;
+    DRILL.cards(document.getElementById('drill'), {
+      section: 'cards',
+      mode: document.getElementById('mode').value,
+      total: parseInt(document.getElementById('total').value, 10),
+      filter: t ? function (e) { return e.topic === t; } : null,
+      title: 'Карточки' + (t ? ': ' + TOPICS[t] : ''),
+    });
+  }
+  document.getElementById('go').addEventListener('click', run);
+  run();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пропущенное слово — Английский язык для кораблестроителей</title>
+<meta name="description" content="Тренажёр «пропущенное слово»: подставить нужное слово в предложение о судне, верфи, машинном отделении и учёбе. Автопроверка с объяснением, прогресс сохраняется.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Пропущенное слово<br><span style="font-weight:400;font-size:.62em">слово в предложении, а не в списке</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>В каждом предложении пропущено одно слово; из трёх вариантов подходит
+      только один — по смыслу и по сочетаемости.</li>
+      <li>После ответа предложение произносится целиком: полезно услышать
+      слово в контексте.</li>
+      <li>Под предложением дан русский перевод — как подсказка о смысле,
+      а не о форме.</li>
+      <li>Материал — судно, верфь, машинное отделение, мостик, учёба.</li>
+    </ul>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note tip">Если ошиблись — прочитайте объяснение и вернитесь к
+  странице, где это слово встречается: ссылки есть в
+  <a href="vocab">словаре курса</a>.</div>
+
+  <div class="chapnav">
+    <span><a href="d-cards">← карточки</a></span>
+    <span><a href="d-match">слово и картинка →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+DRILL.gaps(document.getElementById('drill'), [
+  { s: 'The ___ of the ship is divided into compartments by bulkheads.', a: 'hull',
+    opts: ['hull', 'deck', 'hold'], ru: 'Корпус судна разделён переборками на отсеки.',
+    why: '<b>hull</b> — корпус в целом; <i>deck</i> — палуба, <i>hold</i> — трюм.' },
+  { s: 'The propeller and the rudder are at the ___.', a: 'stern',
+    opts: ['stern', 'bow', 'beam'], ru: 'Винт и руль расположены в корме.',
+    why: '<b>stern</b> — корма; <i>bow</i> — нос, <i>beam</i> — ширина судна.' },
+  { s: 'A watertight ___ stops the water in one compartment.', a: 'bulkhead',
+    opts: ['bulkhead', 'bulwark', 'girder'], ru: 'Водонепроницаемая переборка удерживает воду в одном отсеке.',
+    why: '<b>bulkhead</b> — переборка. Слово составное: <i>bulk</i> + <i>head</i>.' },
+  { s: 'The frames and the stringers stiffen the shell ___.', a: 'plating',
+    opts: ['plating', 'planning', 'plates'], ru: 'Шпангоуты и стрингеры подкрепляют наружную обшивку.',
+    why: '<b>plating</b> — обшивка как целое (неисчисляемое); <i>plates</i> — отдельные листы.' },
+  { s: 'The hull is assembled on the ___ and then launched.', a: 'slipway',
+    opts: ['slipway', 'quay', 'dock'], ru: 'Корпус собирают на стапеле, а затем спускают на воду.',
+    why: '<b>slipway</b> — стапель; спуск на воду происходит именно с него.' },
+  { s: 'The gantry ___ lifts a block of two hundred tonnes.', a: 'crane',
+    opts: ['crane', 'lift', 'winch'], ru: 'Козловой кран поднимает блок в двести тонн.',
+    why: 'Устойчивое сочетание <b>gantry crane</b> — козловой (портальный) кран.' },
+  { s: 'The plates are cut and then ___ into sections in the workshop.', a: 'welded',
+    opts: ['welded', 'melted', 'painted'], ru: 'Листы режут, а затем сваривают в секции в цехе.',
+    why: '<b>weld</b> — сваривать; <i>melt</i> — плавить, <i>paint</i> — красить.' },
+  { s: 'Machinery is installed during ___ at the quay.', a: 'fitting-out',
+    opts: ['fitting-out', 'launching', 'cutting'], ru: 'Механизмы устанавливают во время достройки у причала.',
+    why: '<b>fitting-out</b> — достройка на плаву, после спуска.' },
+  { s: 'Speed and manoeuvring are checked during the sea ___.', a: 'trials',
+    opts: ['trials', 'tries', 'tests'], ru: 'Скорость и управляемость проверяют на ходовых испытаниях.',
+    why: 'Судовые испытания называются <b>sea trials</b>; слово <i>tests</i> здесь не употребляется.' },
+  { s: 'The main engine drives the propeller ___.', a: 'shaft',
+    opts: ['shaft', 'axis', 'bar'], ru: 'Главный двигатель вращает гребной вал.',
+    why: '<b>shaft</b> — вал; <i>axis</i> — геометрическая ось, не деталь.' },
+  { s: 'The ___ produces steam for the turbine.', a: 'boiler',
+    opts: ['boiler', 'burner', 'cooler'], ru: 'Котёл вырабатывает пар для турбины.',
+    why: '<b>boiler</b> — котёл (от <i>to boil</i> — кипятить).' },
+  { s: 'Close the ___ before you open the pipe.', a: 'valve',
+    opts: ['valve', 'value', 'volume'], ru: 'Закройте клапан, прежде чем вскрывать трубу.',
+    why: '<b>valve</b> — клапан. Не путайте с <i>value</i> — значение, величина.' },
+  { s: 'The officer of the watch stands on the ___.', a: 'bridge',
+    opts: ['bridge', 'board', 'deckhouse'], ru: 'Вахтенный помощник находится на ходовом мостике.',
+    why: '<b>bridge</b> — ходовой мостик; то же слово значит «мост».' },
+  { s: 'The echo sounder measures the ___ under the keel.', a: 'depth',
+    opts: ['depth', 'deep', 'deepness'], ru: 'Эхолот измеряет глубину под килем.',
+    why: 'Существительное от <i>deep</i> — <b>depth</b> (ср. <i>wide → width</i>, <i>long → length</i>).' },
+  { s: 'Another vessel is approaching from ___.', a: 'starboard',
+    opts: ['starboard', 'port', 'astern'], ru: 'Другое судно приближается с правого борта.',
+    why: '<b>starboard</b> — правый борт, <i>port</i> — левый.' },
+  { s: 'Tighten the nut with a ___.', a: 'spanner',
+    opts: ['spanner', 'hammer', 'chisel'], ru: 'Затяните гайку гаечным ключом.',
+    why: '<b>spanner</b> — гаечный ключ (в американском варианте <i>wrench</i>).' },
+  { s: 'Measure the thickness of the plate with a vernier ___.', a: 'caliper',
+    opts: ['caliper', 'gauge', 'ruler'], ru: 'Измерьте толщину листа штангенциркулем.',
+    why: 'Штангенциркуль — <b>vernier caliper</b>; <i>gauge</i> — шаблон или манометр.' },
+  { s: 'Silicone coatings ___ the hull from fouling.', a: 'protect',
+    opts: ['protect', 'prevent', 'resist'], ru: 'Силиконовые покрытия защищают корпус от обрастания.',
+    why: 'Сочетание <b>protect … from</b>; <i>prevent</i> требует прямого дополнения (<i>prevent fouling</i>).' },
+  { s: 'Gold of three nanometres ___ at three hundred degrees.', a: 'melts',
+    opts: ['melts', 'burns', 'boils'], ru: 'Золото размером три нанометра плавится при трёхстах градусах.',
+    why: '<b>melt</b> — плавиться; <i>boil</i> — кипеть, <i>burn</i> — гореть.' },
+  { s: 'The properties of a nanoparticle ___ on its size.', a: 'depend',
+    opts: ['depend', 'consist', 'belong'], ru: 'Свойства наночастицы зависят от её размера.',
+    why: 'Устойчивое сочетание <b>depend on</b>; <i>consist of</i> — состоять из.' },
+  { s: 'He is a first-year student at the ___ of Naval Architecture.', a: 'Faculty',
+    opts: ['Faculty', 'Department', 'Chair'], ru: 'Он первокурсник факультета кораблестроения.',
+    why: 'Факультет — <b>faculty</b>; <i>department</i> в русском вузе соответствует кафедре.' },
+  { s: 'Students ___ for exams in January.', a: 'revise',
+    opts: ['revise', 'repeat', 'return'], ru: 'Студенты готовятся к экзаменам в январе.',
+    why: '<b>revise for an exam</b> — готовиться к экзамену, повторять материал.' },
+  { s: 'He will defend his diploma ___ in June.', a: 'project',
+    opts: ['project', 'work', 'paper'], ru: 'Он защитит дипломный проект в июне.',
+    why: 'Устойчивое сочетание <b>diploma project</b>; курсовая — <i>course paper</i>.' },
+  { s: 'All dimensions on the drawing are given in ___.', a: 'millimetres',
+    opts: ['millimetres', 'millimetre', 'milometers'], ru: 'Все размеры на чертеже даны в миллиметрах.',
+    why: 'После предлога <i>in</i> здесь множественное число: <b>in millimetres</b>.' },
+], { section: 'gaps', title: 'Пропущенное слово', total: 12 });
+</script>
+</body>
+</html>

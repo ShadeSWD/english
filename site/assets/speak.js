@@ -328,8 +328,10 @@
     indexDict();
     document.querySelectorAll('.en').forEach((el) => {
       markup(el);
-      const inline = getComputedStyle(el).display === 'inline';
-      if (!inline && !el.classList.contains('nobar')
+      /* панель чтения — только у самостоятельных блоков текста:
+         в ячейке таблицы или в строке она сломала бы вёрстку */
+      const BLOCK = ['DIV', 'P', 'SECTION', 'ARTICLE', 'BLOCKQUOTE'];
+      if (BLOCK.indexOf(el.tagName) >= 0 && !el.classList.contains('nobar')
           && (el.textContent || '').trim().length > 55) addReadbar(el);
     });
     /* подписи на иллюстрациях: <g class="wlbl" data-word="bow"> */

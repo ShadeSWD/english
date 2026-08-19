@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Диктант на слух — Английский язык для кораблестроителей</title>
+<meta name="description" content="Тренажёр-диктант: слово курса произносится, его нужно напечатать. Проверка мгновенная, с транскрипцией и переводом. Работает и без звука — по транскрипции.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Диктант на слух<br><span style="font-weight:400;font-size:.62em">услышать и написать</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Слово произносится один раз автоматически; кнопка «повторить»
+      произносит его снова, сколько нужно.</li>
+      <li>Напечатайте слово и нажмите Enter. Регистр не важен, орфография —
+      важна.</li>
+      <li>После ответа показываются правильное написание, транскрипция
+      и перевод.</li>
+      <li>Если английского голоса в системе нет, тренажёр не ломается:
+      вместо звука даётся транскрипция.</li>
+    </ul>
+  </div>
+
+  <div class="controls">
+    <label>тема <select id="topic"><option value="">все темы</option></select></label>
+    <label>слов <select id="total">
+      <option>10</option><option>15</option><option>20</option></select></label>
+    <button class="btn primary" type="button" id="go">начать подход</button>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note">Частые ловушки: удвоенные согласные (<i>propeller</i>,
+  <i>funnel</i>), немые буквы (<i>buoy</i>, <i>gauge</i>), британское
+  <i>-re</i> и <i>-our</i> (<i>centre</i>, <i>harbour</i>).</div>
+
+  <div class="chapnav">
+    <span><a href="d-match">← слово и картинка</a></span>
+    <span><a href="d-order">порядок слов →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+(function () {
+  var sel = document.getElementById('topic');
+  Object.keys(TOPICS).forEach(function (k) {
+    var o = document.createElement('option');
+    o.value = k; o.textContent = TOPICS[k]; sel.appendChild(o);
+  });
+  function run() {
+    var t = sel.value;
+    DRILL.dictation(document.getElementById('drill'), {
+      section: 'dictation',
+      total: parseInt(document.getElementById('total').value, 10),
+      filter: t ? function (e) { return e.topic === t; } : null,
+      title: 'Диктант' + (t ? ': ' + TOPICS[t] : ''),
+    });
+  }
+  document.getElementById('go').addEventListener('click', run);
+  run();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Порядок слов — Английский язык для кораблестроителей</title>
+<meta name="description" content="Тренажёр на порядок слов: собрать английское предложение из перемешанных слов по русскому переводу. Автопроверка с разбором, прогресс сохраняется.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Порядок слов<br><span style="font-weight:400;font-size:.62em">собрать предложение</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Дан русский перевод и набор английских слов; щёлкайте по словам,
+      чтобы собрать предложение, и по собранному — чтобы вернуть слово назад.</li>
+      <li>Английское предложение почти всегда строится в порядке
+      <b>подлежащее — сказуемое — дополнение — обстоятельство</b>; обстоятельство
+      времени может стоять и в начале.</li>
+      <li>После проверки правильный вариант произносится вслух.</li>
+    </ul>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note tip">Правило, спасающее в половине случаев: в английском
+  предложении не бывает «пустого места» на месте подлежащего. Там, где по-русски
+  говорят «Строят судно», по-английски скажут <i>The ship is built</i> или
+  <i>They build the ship</i>.</div>
+
+  <div class="chapnav">
+    <span><a href="d-dictation">← диктант на слух</a></span>
+    <span><a href="d-grammar">грамматика юнитов →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+DRILL.order(document.getElementById('drill'), [
+  { s: 'The shipyard delivers four vessels a year.', ru: 'Верфь сдаёт четыре судна в год.',
+    why: 'Подлежащее — сказуемое — дополнение; количество времени стоит в конце.' },
+  { s: 'The plates are cut in the workshop.', ru: 'Листы режут в цехе.',
+    why: 'Страдательный залог: <i>are</i> + причастие, затем обстоятельство места.' },
+  { s: 'A watertight bulkhead divides the hull into compartments.',
+    ru: 'Водонепроницаемая переборка делит корпус на отсеки.',
+    why: 'Определения (<i>watertight</i>) стоят перед существительным.' },
+  { s: 'The main engine drives the propeller shaft.', ru: 'Главный двигатель вращает гребной вал.',
+    why: 'Два существительных подряд: первое определяет второе — <i>propeller shaft</i>.' },
+  { s: 'The crew checks the equipment before departure.', ru: 'Экипаж проверяет оборудование перед отходом.',
+    why: 'Обстоятельство времени с предлогом ставится после дополнения.' },
+  { s: 'Students revise for their exams in January.', ru: 'Студенты готовятся к экзаменам в январе.',
+    why: 'Сначала предложное дополнение, затем обстоятельство времени.' },
+  { s: 'He is doing a course in marine engineering.', ru: 'Он учится по программе судовой энергетики.',
+    why: 'Устойчивое сочетание <i>do a course in</i> — учиться по программе.' },
+  { s: 'The properties of small particles depend on their size.',
+    ru: 'Свойства малых частиц зависят от их размера.',
+    why: 'Определение с <i>of</i> стоит после определяемого слова.' },
+  { s: 'The vessel was launched in May.', ru: 'Судно спустили на воду в мае.',
+    why: 'Прошедшее время страдательного залога: <i>was</i> + причастие.' },
+  { s: 'A new coating will be applied to the hull.', ru: 'На корпус нанесут новое покрытие.',
+    why: 'Будущее время страдательного залога: <i>will be</i> + причастие.' },
+  { s: 'You must wear a helmet in the workshop.', ru: 'В цехе обязательно носить каску.',
+    why: 'После модального глагола идёт инфинитив без <i>to</i>.' },
+  { s: 'The surveyor checked the welds before the launching.',
+    ru: 'Инспектор проверил швы перед спуском на воду.',
+    why: 'Прошедшее время правильного глагола: <i>checked</i>.' },
+  { s: 'There is a pump in the engine room.', ru: 'В машинном отделении есть насос.',
+    why: 'Оборот <i>there is</i> ставится в начало, место — в конец.' },
+  { s: 'Can you take notes at the lecture for me?', ru: 'Можешь законспектировать для меня лекцию?',
+    why: 'Вопрос с модальным глаголом начинается с самого глагола.' },
+  { s: 'The gantry crane lifts the block to the slipway.',
+    ru: 'Козловой кран поднимает блок на стапель.',
+    why: 'Направление выражается предлогом <i>to</i> после дополнения.' },
+  { s: 'This work should be done before the sea trials.',
+    ru: 'Эту работу следует выполнить до ходовых испытаний.',
+    why: 'Пассивный инфинитив после модального: <i>should be done</i>.' },
+], { section: 'order', title: 'Порядок слов', total: 10 });
+</script>
+</body>
+</html>

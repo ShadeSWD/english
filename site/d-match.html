@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Слово и картинка — Английский язык для кораблестроителей</title>
+<meta name="description" content="Тренажёр «слово и картинка»: слово произносится, нужно выбрать подходящий значок из четырёх. Предметная лексика судна, машинного отделения и инструмента.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/site.js" data-root="./" data-page="drills"></script>
+<main class="wrap">
+  <h1>Слово и картинка<br><span style="font-weight:400;font-size:.62em">узнать предмет по названию</span></h1>
+
+  <div class="tldr">
+    <h2>Коротко</h2>
+    <ul>
+      <li>Слово произносится и показывается с транскрипцией; из четырёх
+      значков нужно выбрать тот, который оно называет.</li>
+      <li>После ответа правильный значок подсвечивается зелёным, а для
+      неверного выбора показывается, что это было за слово.</li>
+      <li>Значки — те же предметы, что на схемах курса: якорь, винт, руль,
+      котёл, кран, маяк, инструмент, крепёж.</li>
+    </ul>
+  </div>
+
+  <div id="drill"></div>
+
+  <div class="note tip">Перед подходом полезно просмотреть схемы:
+  <a href="pic-ship">части судна</a>, <a href="pic-engine">машинное отделение</a>,
+  <a href="pic-tools">инструменты</a>.</div>
+
+  <div class="chapnav">
+    <span><a href="d-gaps">← пропущенное слово</a></span>
+    <span><a href="d-dictation">диктант на слух →</a></span>
+  </div>
+</main>
+<script src="assets/vocab.js"></script>
+<script src="assets/pics.js"></script>
+<script src="assets/speak.js"></script>
+<script src="assets/lists.js"></script>
+<script src="assets/drill.js"></script>
+<script>
+DRILL.match(document.getElementById('drill'), { section: 'match', total: 12 });
+</script>
+</body>
+</html>
