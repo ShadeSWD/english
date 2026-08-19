@@ -27,6 +27,13 @@
       { h: 'r-yard', k: 'reading', t: 'Building a ship' },
       { h: 'r-welding', k: 'reading', t: 'Welding and joining' },
       { h: 'r-drawing', k: 'reading', t: 'Drawings and standards' },
+      { h: 'book-u1', k: 'book', t: 'Пособие: юнит 1 — зачем учить английский' },
+      { h: 'book-u2', k: 'book', t: 'Пособие: юнит 2 — распорядок дня' },
+      { h: 'book-u3', k: 'book', t: 'Пособие: юнит 3 — учёба' },
+      { h: 'book-u4', k: 'book', t: 'Пособие: юнит 4 — А. Н. Крылов' },
+      { h: 'book-u5', k: 'book', t: 'Пособие: юнит 5 — силиконы' },
+      { h: 'book-u6', k: 'book', t: 'Пособие: юнит 6 — Санкт-Петербург' },
+      { h: 'book-u7', k: 'book', t: 'Пособие: юнит 7 — нанотехнологии' },
     ] },
     { t: 'Картинки', h: 'pictures', drop: [
       { h: 'pictures', k: 'pictures', t: 'Все иллюстрации' },
