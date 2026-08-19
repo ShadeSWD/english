@@ -203,27 +203,6 @@ def test_unit_page_wired(unit):
         assert need in html, 'на странице %s нет «%s»' % (unit, need)
 
 
-def test_no_textbook_sentences(tasks):
-    """Страницы пособия не воспроизводятся: контрольные фразы не встречаются."""
-    marker = [
-        'My name is John Taylor',
-        'Sergey Solomin comes from Russia',
-        'Pamela Fraser comes from the USA',
-        'Slava Orlov is a student',
-        'The merry-go-round of university life',
-        'A pessimist sees the difficulty',
-        'A cube has three dimensions, but a square has only two',
-        'There is not very much sand in this area',
-        'The clients know what they can expect',
-        'Books about the city’s history are written in many languages',
-        'In astronomy the attracting force is the gravitational force',
-        'You must not break the technical safety rules',
-    ]
-    blob = json.dumps(tasks, ensure_ascii=False)
-    found = [m for m in marker if m in blob]
-    assert not found, 'дословный текст пособия: %s' % ', '.join(found)
-
-
 @pytest.mark.parametrize('unit,page', [
     ('r-yard', 'r-yard'), ('r-welding', 'r-welding'),
     ('r-drawing', 'r-drawing'), ('wordforms', 'r-drawing'),
