@@ -171,19 +171,27 @@ def vocab():
     return json.loads(r.stdout)
 
 
+# справочные статьи (артикли, предлоги, числительные, имена собственные) стоят
+# в словаре ради карточки по клику: к теме курса и к странице они не привязаны
+REF_TOPICS = {'sys', 'name'}
+
+
 def test_vocab_entries(vocab):
     """Каждая запись словаря курса заполнена и ссылается на живые тему и страницу."""
     bad = []
     seen = set()
     for e in vocab['v']:
         w = e.get('w', '?')
+        ref = bool(e.get('sys'))
         if w.lower() in seen:
             bad.append('повтор: %s' % w)
         seen.add(w.lower())
-        for field in ('w', 'ipa', 'pos', 'ru', 'ex', 'exru', 'topic', 'at'):
+        fields = ('w', 'ipa', 'pos', 'ru', 'ex', 'exru', 'topic')
+        for field in fields if ref else fields + ('at',):
             if not e.get(field):
                 bad.append('%s: нет поля %s' % (w, field))
-        if e.get('topic') and e['topic'] not in vocab['t']:
+        known = set(vocab['t']) | (REF_TOPICS if ref else set())
+        if e.get('topic') and e['topic'] not in known:
             bad.append('%s: неизвестная тема %r' % (w, e['topic']))
         for a in (e.get('at') or []):
             if a not in vocab['p']:

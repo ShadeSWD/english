@@ -80,8 +80,11 @@
       (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   }
   function say(text) { if (window.EN) window.EN.speak(text); }
+  /* Тренажёрам нужны слова курса, а не справочные статьи: артикли, предлоги,
+     числительные и имена собственные помечены в словаре флагом sys и в подходы
+     не попадают — карточка «the ↔ определённый артикль» ничему не учит. */
   function vocab(filter) {
-    const list = (window.VOCAB || []).filter((e) => !filter || filter(e));
+    const list = (window.VOCAB || []).filter((e) => !e.sys && (!filter || filter(e)));
     return list;
   }
 
