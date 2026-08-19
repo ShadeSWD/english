@@ -463,8 +463,13 @@
     sort: rSort, order: rOrder, dialog: rDialog,
   };
 
-  /* ---------- карточка одного задания ---------- */
-  function card(task, onResult) {
+  /* ---------- карточка одного задания ----------
+   * onResult(task, ok) вызывается после проверки.
+   * opts.silent — не писать результат в общий прогресс и не показывать отметку
+   * с прошлого раза: так карточку берёт проверка уровня, чтобы тест не
+   * перемешивался со статистикой занятий. */
+  function card(task, onResult, opts) {
+    opts = opts || {};
     const box = document.createElement('div');
     box.className = 'task-card';
     box.dataset.id = task.id;
@@ -505,14 +510,14 @@
       if (bCheck.disabled) return;
       const r = view.check();
       verdict(r.ok, r.note);
-      remember(task, r.ok);
-      if (onResult) onResult();
+      if (!opts.silent) remember(task, r.ok);
+      if (onResult) onResult(task, r.ok);
     });
     bAgain.addEventListener('click', draw);
     draw();
 
     /* восстановление отметки с прошлого раза: задание уже решалось */
-    const prev = done()[task.id];
+    const prev = opts.silent ? undefined : done()[task.id];
     if (prev !== undefined) {
       badge.className = 'tk-badge ' + (prev ? 'was-ok' : 'was-bad');
       badge.textContent = prev ? 'решено верно' : 'было с ошибками';
@@ -639,5 +644,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount);
   else autoMount();
 
-  window.EXER = { mount, done, topics, norm };
+  window.EXER = { mount, card, done, topics, norm };
 })();
